@@ -3,28 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="As 32 fontes primárias das análises: arquivos originais do TSE, Banco Central, IBGE, Tesouro Nacional e Federal Reserve, como os portais publicam, com hash SHA-256 e indicação de onde cada um é usado.">
-<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="description" content="Baixe os 50 arquivos oficiais usados nas análises (TSE, Banco Central, IBGE, Tesouro, Fed, Planalto, Congresso e STF), cada um com hash SHA-256 para conferir.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 <link rel="canonical" href="__SITE_URL__/fontes/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Bora pros dados Brasil">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Fontes e dados: baixe os arquivos originais das análises">
-<meta property="og:description" content="As 32 fontes primárias das análises: TSE, Banco Central, IBGE, Tesouro Nacional e Federal Reserve, com hash SHA-256 e onde cada uma é usada.">
+<meta property="og:description" content="Baixe os 50 arquivos oficiais usados nas análises (TSE, Banco Central, IBGE, Tesouro, Fed, Planalto, Congresso e STF), cada um com hash SHA-256 para conferir.">
 <meta property="og:url" content="__SITE_URL__/fontes/">
 <meta property="og:image" content="__SITE_URL__/assets/img/og-fontes.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fontes e dados: os 50 arquivos originais das análises">
+<meta property="article:published_time" content="__DATE_PUBLISHED__">
+<meta property="article:modified_time" content="__DATE_MODIFIED__">
+<meta property="article:section" content="Fontes e dados">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Fontes e dados: baixe os arquivos originais das análises">
-<meta name="twitter:description" content="As 32 fontes primárias das análises: TSE, Banco Central, IBGE, Tesouro Nacional e Federal Reserve, com hash SHA-256 e onde cada uma é usada.">
+<meta name="twitter:description" content="Baixe os 50 arquivos oficiais usados nas análises (TSE, Banco Central, IBGE, Tesouro, Fed, Planalto, Congresso e STF), cada um com hash SHA-256 para conferir.">
 <meta name="twitter:image" content="__SITE_URL__/assets/img/og-fontes.jpg">
+<meta name="twitter:image:alt" content="Fontes e dados: os 50 arquivos originais das análises">
 <link rel="icon" href="/assets/img/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <meta name="theme-color" content="#02522b">
-<title>Fontes e dados: os 32 arquivos originais | Bora pros dados Brasil</title>
+<title>Dados abertos do TSE, BCB, IBGE e Tesouro: os 50 arquivos originais</title>
 <style>
 *{box-sizing:border-box}
 :root{--bg:#f7f7f8;--card:#fff;--border:#e4e4e7;--text:#18181b;--muted:#71717a;--c1:#0079F2;--c2:#795EFF}
@@ -36,61 +41,129 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,B
 .chap-hd{margin-bottom:8px}
 .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
 .explain{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--c1);border-radius:16px;padding:14px 18px;margin:16px 0}
-.explain h4{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.explain h2,.explain h4{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#52525b}
 .explain ul{margin:0;padding-left:18px}
 .explain li{margin:6px 0;font-size:14px;color:#3f3f46}
 .ress{font-size:12.5px;color:var(--muted);margin:8px 0 0}
 .chipu{display:inline-block;background:#f4f4f5;border:1px solid var(--border);border-radius:999px;padding:2px 9px;font-size:11.5px;color:#52525b;white-space:nowrap}
+/* 15/10: link neutro (não é a cor de nenhum lado), resumo "Por que dá para conferir", contagem por fonte */
+a{color:#02522b}
+.explain{border-left-color:#a1a1aa}
+.f-resumo{background:#fff;border:1px solid var(--border);border-radius:18px;padding:16px 18px 14px;margin:18px 0 6px;scroll-margin-top:16px;box-shadow:0 1px 2px rgba(24,24,27,.04),0 14px 34px -22px rgba(24,24,27,.22)}
+.f-resumo h2{margin:0 0 8px;font-size:clamp(20px,2.4vw,24px);letter-spacing:-.02em}
+.f-resumo ol{margin:0 0 12px;padding-left:22px}
+.f-resumo li{margin:4px 0;font-size:15px;line-height:1.5}
+.f-cont{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 4px;padding:0;list-style:none}
+.f-cont a{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:4px 12px;border:1px solid var(--border);border-radius:999px;background:#fafafa;color:#18181b;text-decoration:none;font-size:14px}
+.f-cont a b{font-variant-numeric:tabular-nums}
+.f-cont .tot{font-weight:700;align-self:center;font-size:14.5px;padding:0 4px}
+.f-resumo .q-mais{margin:10px 0 4px}
+.f-resumo code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:#f4f4f5;border-radius:6px;padding:1px 5px;overflow-wrap:anywhere}
+.f-resumo .share{margin-top:10px}
+@media(max-width:760px){.wrap{padding:22px 16px 10px}.f-resumo{padding:14px 14px 12px}}
+@media (pointer:coarse){.f-cont a{min-height:44px}}
+@media (max-width:760px){
+  body .dados-tbl tr{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"desc dl" "nome dl" "uso dl";gap:1px 10px;padding:9px 12px}
+  /* a11y: sem corte de texto (WCAG 1.4.10/1.4.12) — descrição e nome do arquivo aparecem inteiros */
+  body .dados-tbl td:nth-child(2){font-size:14px;line-height:1.35}
+  body .dados-tbl td.fname{font-size:12px;line-height:1.3;overflow-wrap:anywhere}
+  body .dados-tbl td:nth-child(3){font-size:12.5px}
+  body .dados-tbl td:nth-child(4){align-self:center}
+  .dados-tbl .chipu{display:inline;border:0;background:none;padding:0;font-size:12.5px;white-space:normal;color:#3f3f46}
+  .chap .lead{font-size:14.5px;line-height:1.45;margin:6px 0 8px}
+}
 </style>
 <link rel="stylesheet" href="/assets/css/site.css">
 <script>window.SITE_CONFIG={"gaId":"__GA_ID__","siteUrl":"__SITE_URL__","pageId":"fontes","consent":"__CONSENT__"};</script>
 <script defer src="/assets/js/analytics.js"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "Fontes e dados: baixe os arquivos originais das análises", "description": "As 32 fontes primárias das análises: TSE, Banco Central, IBGE, Tesouro Nacional e Federal Reserve, com hash SHA-256 e onde cada uma é usada.", "inLanguage": "pt-BR", "mainEntityOfPage": "__SITE_URL__/fontes/", "image": "__SITE_URL__/assets/img/og-fontes.jpg", "author": {"@type": "Organization", "name": "Bora pros dados Brasil"}, "publisher": {"@type": "Organization", "name": "Bora pros dados Brasil", "logo": {"@type": "ImageObject", "url": "__SITE_URL__/assets/img/logo-400.png"}}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "__SITE_URL__/"}, {"@type": "ListItem", "position": 2, "name": "Fontes e dados", "item": "__SITE_URL__/fontes/"}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "__SITE_URL__/#org", "name": "Bora pros dados Brasil", "url": "__SITE_URL__/", "logo": {"@type": "ImageObject", "url": "__SITE_URL__/assets/img/logo-400.png", "width": 400, "height": 225}, "description": "Análises descritivas com dados públicos oficiais do Brasil, sem juízo político, com os arquivos originais para download."}, {"@type": "WebSite", "@id": "__SITE_URL__/#website", "name": "Bora pros dados Brasil", "url": "__SITE_URL__/", "inLanguage": "pt-BR", "publisher": {"@id": "__SITE_URL__/#org"}}, {"@type": "BreadcrumbList", "@id": "__SITE_URL__/fontes/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "__SITE_URL__/"}, {"@type": "ListItem", "position": 2, "name": "Fontes e dados", "item": "__SITE_URL__/fontes/"}]}, {"@type": "WebPage", "@id": "__SITE_URL__/fontes/#webpage", "url": "__SITE_URL__/fontes/", "name": "Dados abertos do TSE, BCB, IBGE e Tesouro: os 50 arquivos originais", "description": "Baixe os 50 arquivos oficiais usados nas análises (TSE, Banco Central, IBGE, Tesouro, Fed, Planalto, Congresso e STF), cada um com hash SHA-256 para conferir.", "inLanguage": "pt-BR", "isPartOf": {"@id": "__SITE_URL__/#website"}, "primaryImageOfPage": {"@type": "ImageObject", "url": "__SITE_URL__/assets/img/og-fontes.jpg", "width": 1200, "height": 630}, "datePublished": "__DATE_PUBLISHED__", "dateModified": "__DATE_MODIFIED__", "breadcrumb": {"@id": "__SITE_URL__/fontes/#breadcrumb"}}, {"@type": "Article", "@id": "__SITE_URL__/fontes/#article", "headline": "Fontes e dados: baixe os arquivos originais das análises", "description": "Baixe os 50 arquivos oficiais usados nas análises (TSE, Banco Central, IBGE, Tesouro, Fed, Planalto, Congresso e STF), cada um com hash SHA-256 para conferir.", "inLanguage": "pt-BR", "mainEntityOfPage": {"@id": "__SITE_URL__/fontes/#webpage"}, "image": "__SITE_URL__/assets/img/og-fontes.jpg", "datePublished": "__DATE_PUBLISHED__", "dateModified": "__DATE_MODIFIED__", "author": {"@id": "__SITE_URL__/#org"}, "publisher": {"@id": "__SITE_URL__/#org"}, "isAccessibleForFree": true, "articleSection": "Fontes e dados", "keywords": "dados abertos TSE, baixar dados do TSE, dados abertos IBGE Banco Central, SICONFI, Resultado do Tesouro Nacional, precatórios, teto de gastos, arcabouço fiscal, fontes dos dados", "isBasedOn": ["https://dadosabertos.tse.jus.br/", "https://www.bcb.gov.br/", "https://sidra.ibge.gov.br/", "https://www.tesourotransparente.gov.br/", "https://markets.newyorkfed.org/", "https://www.planalto.gov.br/", "https://www2.camara.leg.br/", "https://www12.senado.leg.br/", "https://portal.stf.jus.br/"]}]}</script>
+<link rel="stylesheet" href="/assets/css/share.css">
+<script defer src="/assets/js/share.js"></script>
+<script defer src="/assets/js/ui.js"></script>
 </head>
 <body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <header class="sitebar">
   <div class="sb-in">
     <a class="sb-brand" href="/" aria-label="Bora pros dados Brasil, início"><img src="/assets/img/logo-400.png" alt="Bora pros dados Brasil" width="200" height="113"></a>
+    <a href="#fonte-tse" class="sb-cta"><svg class="sb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg><span class="t-longo">Ver as fontes ↓</span> <span class="t-curto">Fontes ↓</span></a>
     <nav class="sb-nav" aria-label="Páginas do site">
-      <a href="/">Governo Lula × Bolsonaro</a>
+      <a href="/"><span class="t-longo">Governo Lula × Bolsonaro</span> <span class="t-curto">Governos</span></a>
       <a href="/propostas/">Propostas 2026</a>
-      <a href="/balanco/">Promessas e Realizações Lula × Bolsonaro</a>
-      <a href="#fonte-tse" class="sb-cta">Ver as fontes ↓</a>
+      <a href="/balanco/"><span class="t-longo">Promessas e Realizações Lula × Bolsonaro</span> <span class="t-curto">Promessas</span></a>
+      <a href="/comparacoes/">Comparações</a>
     </nav>
   </div>
 </header>
+<main id="conteudo" tabindex="-1">
+<div class="q-cred-wrap">
+  <div class="q-cred" role="note" aria-label="Sobre a confiabilidade destes dados">
+    <span class="q-cred-selo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3.5v6c0 5-3.4 8.8-8 10.5-4.6-1.7-8-5.5-8-10.5v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg> Arquivos como o governo publica</span>
+    <span class="q-cred-fontes">Baixados entre 06 e 15/10/2026</span>
+    <span class="q-cred-data">Atualizado em <time datetime="__UPDATED_ISO__">__UPDATED__</time></span>
+    <span class="q-cred-links"><a href="#sha256">O que é SHA-256 ›</a><a href="/dados/SHA256SUMS.txt">Todos os SHA-256</a><a href="#quem-fez">Quem fez ›</a></span>
+  </div>
+</div>
 <div class="wrap" id="topo">
   <div class="hdr">
     <div>
       <p class="eyebrow">Bora pros dados Brasil · fontes e dados · arquivos originais para download</p>
-      <h1>Fontes e dados: baixe os 32 arquivos originais das três análises</h1>
-      <p class="sub">Tudo o que aparece nas análises sai daqui: são <b>32 arquivos baixados direto dos portais oficiais de dados abertos</b>, do jeito que o governo publica, sem tratamento. Cada arquivo diz em qual análise é usado. Baixe, confira e refaça as contas.</p>
+      <h1>Fontes: os 50 arquivos oficiais por trás de cada número</h1>
+      <p class="sub">Baixados dos portais do <abbr title="Tribunal Superior Eleitoral">TSE</abbr>, Banco Central, <abbr title="Instituto Brasileiro de Geografia e Estatística">IBGE</abbr>, Tesouro, Fed (o banco central dos EUA), Planalto, Congresso e <abbr title="Supremo Tribunal Federal">STF</abbr>, sem mudança. Cada um tem uma impressão digital (SHA-256) para conferir.</p>
     </div>
   </div>
+  <section class="f-resumo" id="resumo" data-track-section="resumo" data-track-name="Por que dá para conferir" aria-labelledby="resumo-t">
+    <p class="q-resumo-kicker">Por que confiar</p>
+    <h2 id="resumo-t">Por que dá para conferir</h2>
+    <ol>
+      <li>Os arquivos vêm direto dos portais oficiais, sem tratamento.</li>
+      <li>Cada arquivo tem uma impressão digital (SHA-256): se um único número mudar, a impressão muda.</li>
+      <li>As contas estão descritas em “Como calculamos” de cada página.</li>
+    </ol>
+    <ul class="f-cont" aria-label="Arquivos por fonte">
+      <li><a href="#fonte-tse">TSE <b>7</b></a></li>
+      <li><a href="#fonte-banco-central">Banco Central <b>6</b></a></li>
+      <li><a href="#fonte-ibge">IBGE <b>3</b></a></li>
+      <li><a href="#fonte-tesouro-siconfi">Tesouro (<abbr title="Sistema de Informações Contábeis e Fiscais do Setor Público">SICONFI</abbr>) <b>15</b></a></li>
+      <li><a href="#fonte-federal-reserve">Fed <b>1</b></a></li>
+      <li><a href="#fonte-tesouro-rtn">Tesouro (<abbr title="Resultado do Tesouro Nacional">RTN</abbr>) <b>9</b></a></li>
+      <li><a href="#fonte-legislacao-fiscal">Leis, notas técnicas e STF <b>9</b></a></li>
+      <li class="tot">= 50 arquivos</li>
+    </ul>
+    <details class="q-mais" id="sha256">
+      <summary data-track="detalhes_abertos" data-track-label="sha256"><span class="ao-abrir">O que é SHA-256 e como conferir</span><span class="ao-fechar">Fechar</span></summary>
+      <div class="q-mais-corpo">
+        <p style="margin:4px 0 8px;font-size:15px">A impressão digital (SHA-256) é um código calculado a partir de cada byte do arquivo: se um único número mudar, o código muda.</p>
+        <p style="margin:0 0 8px;font-size:15px">Como conferir a impressão digital: no computador, rode <code>shasum -a 256 nome-do-arquivo</code> (Mac/Linux) ou <code>certutil -hashfile nome-do-arquivo SHA256</code> (Windows) e compare com o código da <a href="/dados/SHA256SUMS.txt">lista de SHA-256</a>.</p>
+      </div>
+    </details>
+    <div class="share" data-share-section="fontes" data-share-placement="placar" data-share-anchor="resumo" data-share-name="as fontes"
+         data-share-text="📊 Bora pros dados Brasil: os 50 arquivos oficiais (TSE, Banco Central, IBGE, Tesouro, Fed, Planalto, Congresso e STF) por trás de cada número, com impressão digital SHA-256 para conferir."></div>
+  </section>
   <div class="explain">
-    <h4>O que é isto</h4>
+    <h2>O que é isto</h2>
     <ul>
-      <li><b>São as fontes primárias</b> das três análises, os arquivos como os portais oficiais os entregam. Nenhum número foi reescrito aqui.</li>
-      <li><b>Formatos:</b> <b>PDF</b> = documento oficial na íntegra (planos de governo registrados no TSE) · <b>ZIP</b> = pacote como publicado (totalização de votos, base de candidaturas) · <b>JSON/JSONL</b> = resposta das APIs oficiais · <b>CSV</b> = tabela.</li>
+      <li><b>São as fontes primárias</b> das três análises, os arquivos como os portais oficiais os entregam. Nenhum número foi reescrito aqui. Você não precisa baixar nada para usar o site: esta página é para quem quer conferir as contas.</li>
+      <li><b>Formatos:</b> <b>PDF</b> = documento oficial na íntegra (planos de governo, boletins do Tesouro, notas técnicas) · <b>ZIP</b> = pacote como publicado (totalização de votos, base de candidaturas) · <b>JSON/JSONL</b> = resposta das APIs oficiais · <b>XLSX</b> = planilha oficial · <b>HTM/HTML</b> = página oficial salva como estava (leis no Planalto, notícia do STF), que o botão baixa em vez de abrir.</li>
     </ul>
   </div>
   <section class="chap" id="fonte-tse" data-track-section="fontes-tse" data-track-name="TSE">
     <div class="chap-hd">
-      <div class="kicker">Fonte 1 de 5 · TSE</div>
+      <div class="kicker">Fonte 1 de 7 · TSE</div>
       <h2>TSE, os planos de governo e a eleição de 2026</h2>
     </div>
-    <p class="lead">Do <b>Portal de Dados Abertos do TSE</b> (dadosabertos.tse.jus.br): as propostas de governo registradas pelos candidatos (2018, 2022 e 2026) e o resultado oficial da eleição de 2026. É a base das páginas <b>Propostas 2026</b> e <b>Promessas e Realizações</b>.</p>
+    <p class="lead">Do <b>Portal de Dados Abertos do TSE</b> (Tribunal Superior Eleitoral, dadosabertos.tse.jus.br): as propostas de governo registradas pelos candidatos (2018, 2022 e 2026) e o resultado oficial da eleição de 2026. É a base das páginas <b>Propostas 2026</b> e <b>Promessas e Realizações</b>.</p>
     <div class="tbl-card">
       <table class="dados-tbl">
         <thead><tr><th style="width:24%">Arquivo</th><th>O que é</th><th>Usado em</th><th>Baixar</th></tr></thead>
         <tbody>
-<tr><td class="fname">2018BR280000614517.pdf</td><td>Plano de governo de Bolsonaro (2018), “O Caminho da Prosperidade”, íntegra (81 págs.)</td><td style="white-space:nowrap"><span class="chipu">Promessas e Realizações</span></td><td><a class="dl" href="/dados/tse/2018BR280000614517.pdf" download data-download="1" data-file="2018BR280000614517.pdf" data-type="pdf" data-size="1,9 MB" data-cat="tse">baixar · 1,9 MB</a></td></tr>
-<tr><td class="fname">2022BR280001607829.pdf</td><td>Plano de governo de Lula (2022), “Diretrizes para o programa de reconstrução e transformação do Brasil” (21 págs.)</td><td style="white-space:nowrap"><span class="chipu">Promessas e Realizações</span></td><td><a class="dl" href="/dados/tse/2022BR280001607829.pdf" download data-download="1" data-file="2022BR280001607829.pdf" data-type="pdf" data-size="" data-cat="tse">baixar · </a></td></tr>
-<tr><td class="fname">2026BR280002542548_01.pdf</td><td>Proposta de governo de Lula (PT), 2026, íntegra (84 págs.)</td><td style="white-space:nowrap"><span class="chipu">Propostas 2026</span></td><td><a class="dl" href="/dados/tse/2026BR280002542548_01.pdf" download data-download="1" data-file="2026BR280002542548_01.pdf" data-type="pdf" data-size="1,2 MB" data-cat="tse">baixar · 1,2 MB</a></td></tr>
-<tr><td class="fname">2026BR280002551544_01.pdf</td><td>Proposta de governo de Flávio Bolsonaro (PL), 2026, íntegra (76 págs.)</td><td style="white-space:nowrap"><span class="chipu">Propostas 2026</span></td><td><a class="dl" href="/dados/tse/2026BR280002551544_01.pdf" download data-download="1" data-file="2026BR280002551544_01.pdf" data-type="pdf" data-size="1,9 MB" data-cat="tse">baixar · 1,9 MB</a></td></tr>
-<tr><td class="fname">Relatorio_Totalizacao_2026_BR.zip</td><td>Resultado oficial do 1º turno 2026, totalização (votos por candidato)</td><td style="white-space:nowrap"><span class="chipu">Propostas 2026</span></td><td><a class="dl" href="/dados/tse/Relatorio_Totalizacao_2026_BR.zip" download data-download="1" data-file="Relatorio_Totalizacao_2026_BR.zip" data-type="zip" data-size="" data-cat="tse">baixar · </a></td></tr>
-<tr><td class="fname">Relatorio_Totalizacao_2026_ZZ.zip</td><td>Totalização 2026, consolidado nacional (conferência)</td><td style="white-space:nowrap"><span class="chipu">Propostas 2026</span></td><td><a class="dl" href="/dados/tse/Relatorio_Totalizacao_2026_ZZ.zip" download data-download="1" data-file="Relatorio_Totalizacao_2026_ZZ.zip" data-type="zip" data-size="" data-cat="tse">baixar · </a></td></tr>
-<tr><td class="fname">consulta_cand_2026.zip</td><td>Base de candidaturas 2026 (identificação e cruzamentos)</td><td style="white-space:nowrap"><span class="chipu">Propostas 2026</span></td><td><a class="dl" href="/dados/tse/consulta_cand_2026.zip" download data-download="1" data-file="consulta_cand_2026.zip" data-type="zip" data-size="3,2 MB" data-cat="tse">baixar · 3,2 MB</a></td></tr>
+<tr><td class="fname">2018BR280000614517.pdf</td><td>Plano de governo de Bolsonaro (2018), “O Caminho da Prosperidade”, íntegra (81 págs.)</td><td style="white-space:nowrap"><span class="chipu">Promessas e Realizações</span></td><td><a class="dl" href="/dados/tse/2018BR280000614517.pdf" download data-download="1" data-file="2018BR280000614517.pdf" data-type="pdf" data-size="1,9 MB" data-cat="tse">baixar<span class="vh"> Plano de governo de Bolsonaro (2018)</span>&#160;· 1,9 MB</a></td></tr>
+<tr><td class="fname">2022BR280001607829.pdf</td><td>Plano de governo de Lula (2022), “Diretrizes para o programa de reconstrução e transformação do Brasil” (21 págs.)</td><td style="white-space:nowrap"><span class="chipu">Promessas e Realizações</span></td><td><a class="dl" href="/dados/tse/2022BR280001607829.pdf" download data-download="1" data-file="2022BR280001607829.pdf" data-type="pdf" data-size="276 KB" data-cat="tse">baixar<span class="vh"> Plano de governo de Lula (2022)</span>&#160;· 276 KB</a></td></tr>
+<tr><td class="fname">2026BR280002542548_01.pdf</td><td>Proposta de governo de Lula (PT), 2026, íntegra (84 págs.)</td><td style="white-space:nowrap"><span class="chipu">Propostas 2026</span></td><td><a class="dl" href="/dados/tse/2026BR280002542548_01.pdf" download data-download="1" data-file="2026BR280002542548_01.pdf" data-type="pdf" data-size="1,2 MB" data-cat="tse">baixar<span class="vh"> Proposta de governo de Lula (PT)</span>&#160;· 1,2 MB</a></td></tr>
+<tr><td class="fname">2026BR280002551544_01.pdf</td><td>Proposta de governo de Flávio Bolsonaro (PL), 2026, íntegra (76 págs.)</td><td style="white-space:nowrap"><span class="chipu">Propostas 2026</span></td><td><a class="dl" href="/dados/tse/2026BR280002551544_01.pdf" download data-download="1" data-file="2026BR280002551544_01.pdf" data-type="pdf" data-size="1,9 MB" data-cat="tse">baixar<span class="vh"> Proposta de governo de Flávio Bolsonaro (PL)</span>&#160;· 1,9 MB</a></td></tr>
+<tr><td class="fname">Relatorio_Totalizacao_2026_BR.zip</td><td>Resultado oficial do 1º turno 2026, totalização (votos por candidato)</td><td style="white-space:nowrap"><span class="chipu">Propostas 2026</span></td><td><a class="dl" href="/dados/tse/Relatorio_Totalizacao_2026_BR.zip" download data-download="1" data-file="Relatorio_Totalizacao_2026_BR.zip" data-type="zip" data-size="287 KB" data-cat="tse">baixar<span class="vh"> Resultado oficial do 1º turno 2026</span>&#160;· 287 KB</a></td></tr>
+<tr><td class="fname">Relatorio_Totalizacao_2026_ZZ.zip</td><td>Totalização 2026, consolidado nacional (conferência)</td><td style="white-space:nowrap"><span class="chipu">Propostas 2026</span></td><td><a class="dl" href="/dados/tse/Relatorio_Totalizacao_2026_ZZ.zip" download data-download="1" data-file="Relatorio_Totalizacao_2026_ZZ.zip" data-type="zip" data-size="319 KB" data-cat="tse">baixar<span class="vh"> Totalização 2026</span>&#160;· 319 KB</a></td></tr>
+<tr><td class="fname">consulta_cand_2026.zip</td><td>Base de candidaturas 2026 (identificação e cruzamentos)</td><td style="white-space:nowrap"><span class="chipu">Propostas 2026</span></td><td><a class="dl" href="/dados/tse/consulta_cand_2026.zip" download data-download="1" data-file="consulta_cand_2026.zip" data-type="zip" data-size="3,2 MB" data-cat="tse">baixar<span class="vh"> Base de candidaturas 2026 (identificação e cruzamentos)</span>&#160;· 3,2 MB</a></td></tr>
         </tbody>
       </table>
     </div>
@@ -98,20 +171,20 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,B
   </section>
   <section class="chap" id="fonte-banco-central" data-track-section="fontes-banco-central" data-track-name="Banco Central">
     <div class="chap-hd">
-      <div class="kicker">Fonte 2 de 5 · Banco Central</div>
+      <div class="kicker">Fonte 2 de 7 · Banco Central</div>
       <h2>Banco Central, juros, inflação e atividade (SGS e Focus)</h2>
     </div>
-    <p class="lead">Do <b>Banco Central do Brasil</b>: as séries do SGS (api.bcb.gov.br) e as expectativas de mercado do boletim Focus (olinda.bcb.gov.br), Selic, IPCA, INPC, PIB, desemprego, câmbio, dívida e resultado fiscal.</p>
+    <p class="lead">Do <b>Banco Central do Brasil</b>: as séries do SGS (Sistema Gerenciador de Séries Temporais, api.bcb.gov.br) e as expectativas de mercado do boletim Focus (olinda.bcb.gov.br): Selic (o juro básico), inflação (IPCA e INPC, os índices oficiais de preços), PIB (Produto Interno Bruto, tudo o que o país produz), desemprego, câmbio, dívida e resultado fiscal.</p>
     <div class="tbl-card">
       <table class="dados-tbl">
         <thead><tr><th style="width:24%">Arquivo</th><th>O que é</th><th>Usado em</th><th>Baixar</th></tr></thead>
         <tbody>
-<tr><td class="fname">bcb_sgs_series.json</td><td>Séries do SGS: Selic (432), IPCA (433), PIB nominal (4380) e real (7326), desemprego (24369), salário mínimo (1619), dólar (1), dívida bruta (13762), dívida líquida (4513), resultado primário (5793) e nominal (5727)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/banco-central/bcb_sgs_series.json" download data-download="1" data-file="bcb_sgs_series.json" data-type="json" data-size="" data-cat="banco-central">baixar · </a></td></tr>
-<tr><td class="fname">bcb_sgs188_inpc.json</td><td>INPC mensal (SGS 188), usado na deflação do salário mínimo</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/banco-central/bcb_sgs188_inpc.json" download data-download="1" data-file="bcb_sgs188_inpc.json" data-type="json" data-size="" data-cat="banco-central">baixar · </a></td></tr>
-<tr><td class="fname">bcb_sgs4380_pib_2018plus.json</td><td>PIB nominal desde 2018, detalhado (SGS 4380), base do PIB de 12 meses</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/banco-central/bcb_sgs4380_pib_2018plus.json" download data-download="1" data-file="bcb_sgs4380_pib_2018plus.json" data-type="json" data-size="" data-cat="banco-central">baixar · </a></td></tr>
-<tr><td class="fname">bcb_dbgg_serie_2018plus.json</td><td>Dívida bruta do governo geral, % do PIB, desde jun/2018 (SGS 13762), inclui dez/2018 (75,27%)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/banco-central/bcb_dbgg_serie_2018plus.json" download data-download="1" data-file="bcb_dbgg_serie_2018plus.json" data-type="json" data-size="" data-cat="banco-central">baixar · </a></td></tr>
-<tr><td class="fname">bcb_focus_ipca_2026.json</td><td>Focus (02/10/2026), mediana esperada do IPCA para 2026 (~5,0%)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/banco-central/bcb_focus_ipca_2026.json" download data-download="1" data-file="bcb_focus_ipca_2026.json" data-type="json" data-size="" data-cat="banco-central">baixar · </a></td></tr>
-<tr><td class="fname">bcb_focus_ipca_12m.json</td><td>Focus, expectativa de IPCA em 12 meses (~4,9%), juro real ex-ante</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/banco-central/bcb_focus_ipca_12m.json" download data-download="1" data-file="bcb_focus_ipca_12m.json" data-type="json" data-size="" data-cat="banco-central">baixar · </a></td></tr>
+<tr><td class="fname">bcb_sgs_series.json</td><td>Séries do SGS: Selic (432), IPCA (433), PIB nominal (4380) e real (7326), desemprego (24369), salário mínimo (1619), dólar (1), dívida bruta (13762), dívida líquida (4513), resultado primário (5793) e nominal (5727)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/banco-central/bcb_sgs_series.json" download data-download="1" data-file="bcb_sgs_series.json" data-type="json" data-size="235 KB" data-cat="banco-central">baixar<span class="vh"> Séries do SGS: Selic (432)</span>&#160;· 235 KB</a></td></tr>
+<tr><td class="fname">bcb_sgs188_inpc.json</td><td>INPC mensal (SGS 188), usado na deflação do salário mínimo</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/banco-central/bcb_sgs188_inpc.json" download data-download="1" data-file="bcb_sgs188_inpc.json" data-type="json" data-size="5 KB" data-cat="banco-central">baixar<span class="vh"> INPC mensal (SGS 188)</span>&#160;· 5 KB</a></td></tr>
+<tr><td class="fname">bcb_sgs4380_pib_2018plus.json</td><td>PIB nominal desde 2018, detalhado (SGS 4380), base do PIB de 12 meses</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/banco-central/bcb_sgs4380_pib_2018plus.json" download data-download="1" data-file="bcb_sgs4380_pib_2018plus.json" data-type="json" data-size="6 KB" data-cat="banco-central">baixar<span class="vh"> PIB nominal desde 2018</span>&#160;· 6 KB</a></td></tr>
+<tr><td class="fname">bcb_dbgg_serie_2018plus.json</td><td>Dívida bruta do governo geral, % do PIB, desde jun/2018 (SGS 13762), inclui dez/2018 (75,27%)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/banco-central/bcb_dbgg_serie_2018plus.json" download data-download="1" data-file="bcb_dbgg_serie_2018plus.json" data-type="json" data-size="6 KB" data-cat="banco-central">baixar<span class="vh"> Dívida bruta do governo geral</span>&#160;· 6 KB</a></td></tr>
+<tr><td class="fname">bcb_focus_ipca_2026.json</td><td>Focus (02/10/2026), mediana esperada do IPCA para 2026 (~5,0%)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/banco-central/bcb_focus_ipca_2026.json" download data-download="1" data-file="bcb_focus_ipca_2026.json" data-type="json" data-size="0,3 KB" data-cat="banco-central">baixar<span class="vh"> Focus (02/10/2026)</span>&#160;· 0,3 KB</a></td></tr>
+<tr><td class="fname">bcb_focus_ipca_12m.json</td><td>Focus, expectativa de IPCA em 12 meses (~4,9%), juro real ex-ante</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/banco-central/bcb_focus_ipca_12m.json" download data-download="1" data-file="bcb_focus_ipca_12m.json" data-type="json" data-size="3 KB" data-cat="banco-central">baixar<span class="vh"> Focus</span>&#160;· 3 KB</a></td></tr>
         </tbody>
       </table>
     </div>
@@ -119,17 +192,17 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,B
   </section>
   <section class="chap" id="fonte-ibge" data-track-section="fontes-ibge" data-track-name="IBGE">
     <div class="chap-hd">
-      <div class="kicker">Fonte 3 de 5 · IBGE</div>
+      <div class="kicker">Fonte 3 de 7 · IBGE</div>
       <h2>IBGE, renda, desigualdade e população (PNAD Contínua)</h2>
     </div>
-    <p class="lead">Do <b>IBGE</b>, via API SIDRA (servicodados.ibge.gov.br): renda domiciliar por pessoa, faixas de percentil (P10…P95), índice de Gini, renda média e população, a régua dos cortes de renda da análise.</p>
+    <p class="lead">Do <b>IBGE</b> (Instituto Brasileiro de Geografia e Estatística), pela PNAD Contínua (Pesquisa Nacional por Amostra de Domicílios), via SIDRA (o sistema de tabelas do IBGE, servicodados.ibge.gov.br): renda domiciliar por pessoa, faixas de percentil (P10…P95), índice de Gini, renda média e população, a régua dos cortes de renda da análise.</p>
     <div class="tbl-card">
       <table class="dados-tbl">
         <thead><tr><th style="width:24%">Arquivo</th><th>O que é</th><th>Usado em</th><th>Baixar</th></tr></thead>
         <tbody>
-<tr><td class="fname">ibge_sidra.json</td><td>PNAD Contínua via SIDRA: Gini (7435), população (7436), renda média (7437) e limites de percentil P10–P95 (7438)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/ibge/ibge_sidra.json" download data-download="1" data-file="ibge_sidra.json" data-type="json" data-size="" data-cat="ibge">baixar · </a></td></tr>
-<tr><td class="fname">ibge_sidra_7531_renda_percentis.json</td><td>Renda domiciliar por pessoa por faixas de percentil (7531), 50% mais pobres × topo</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/ibge/ibge_sidra_7531_renda_percentis.json" download data-download="1" data-file="ibge_sidra_7531_renda_percentis.json" data-type="json" data-size="" data-cat="ibge">baixar · </a></td></tr>
-<tr><td class="fname">ibge_sidra_renda_7456_7458.json</td><td>Renda domiciliar per capita real + pesos por programa social (7456/7457/7458), reconstrução da série total</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/ibge/ibge_sidra_renda_7456_7458.json" download data-download="1" data-file="ibge_sidra_renda_7456_7458.json" data-type="json" data-size="" data-cat="ibge">baixar · </a></td></tr>
+<tr><td class="fname">ibge_sidra.json</td><td>PNAD Contínua via SIDRA: Gini (7435), população (7436), renda média (7437) e limites de percentil P10–P95 (7438)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/ibge/ibge_sidra.json" download data-download="1" data-file="ibge_sidra.json" data-type="json" data-size="6 KB" data-cat="ibge">baixar<span class="vh"> PNAD Contínua via SIDRA: Gini (7435)</span>&#160;· 6 KB</a></td></tr>
+<tr><td class="fname">ibge_sidra_7531_renda_percentis.json</td><td>Renda domiciliar por pessoa por faixas de percentil (7531), 50% mais pobres × topo</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/ibge/ibge_sidra_7531_renda_percentis.json" download data-download="1" data-file="ibge_sidra_7531_renda_percentis.json" data-type="json" data-size="4 KB" data-cat="ibge">baixar<span class="vh"> Renda domiciliar por pessoa por faixas de percentil (7531)</span>&#160;· 4 KB</a></td></tr>
+<tr><td class="fname">ibge_sidra_renda_7456_7458.json</td><td>Renda domiciliar per capita real + pesos por programa social (7456/7457/7458), reconstrução da série total</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/ibge/ibge_sidra_renda_7456_7458.json" download data-download="1" data-file="ibge_sidra_renda_7456_7458.json" data-type="json" data-size="3 KB" data-cat="ibge">baixar<span class="vh"> Renda domiciliar per capita real + pesos por programa social (7456/7457/7458)</span>&#160;· 3 KB</a></td></tr>
         </tbody>
       </table>
     </div>
@@ -137,29 +210,29 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,B
   </section>
   <section class="chap" id="fonte-tesouro-siconfi" data-track-section="fontes-tesouro-siconfi" data-track-name="Tesouro Nacional">
     <div class="chap-hd">
-      <div class="kicker">Fonte 4 de 5 · Tesouro Nacional</div>
+      <div class="kicker">Fonte 4 de 7 · Tesouro Nacional</div>
       <h2>Tesouro Nacional, gasto, dívida e estados (SICONFI)</h2>
     </div>
-    <p class="lead">Da <b>Secretaria do Tesouro Nacional</b>: execução orçamentária (RREO), finanças dos estados (RGF) e dívida pública, via SICONFI (apidatalake.tesouro.gov.br) e Tesouro Transparente (tesourotransparente.gov.br).</p>
+    <p class="lead">Da <b>Secretaria do Tesouro Nacional</b>: execução orçamentária (RREO, Relatório Resumido da Execução Orçamentária), finanças dos estados (RGF, Relatório de Gestão Fiscal) e dívida pública, via SICONFI (Sistema de Informações Contábeis e Fiscais do Setor Público, apidatalake.tesouro.gov.br) e Tesouro Transparente (tesourotransparente.gov.br).</p>
     <div class="tbl-card">
       <table class="dados-tbl">
         <thead><tr><th style="width:24%">Arquivo</th><th>O que é</th><th>Usado em</th><th>Baixar</th></tr></thead>
         <tbody>
-<tr><td class="fname">uniao_rreo.jsonl</td><td>RREO da União, extração inicial (checagens)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/uniao_rreo.jsonl" download data-download="1" data-file="uniao_rreo.jsonl" data-type="jsonl" data-size="" data-cat="tesouro-siconfi">baixar · </a></td></tr>
-<tr><td class="fname">uniao_natureza.jsonl</td><td>RREO Anexo 01 da União, despesa por grupo de natureza</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/uniao_natureza.jsonl" download data-download="1" data-file="uniao_natureza.jsonl" data-type="jsonl" data-size="" data-cat="tesouro-siconfi">baixar · </a></td></tr>
-<tr><td class="fname">uniao_funcoes.jsonl</td><td>RREO Anexo 02 da União, despesa por função</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/uniao_funcoes.jsonl" download data-download="1" data-file="uniao_funcoes.jsonl" data-type="jsonl" data-size="" data-cat="tesouro-siconfi">baixar · </a></td></tr>
-<tr><td class="fname">rreo_main.jsonl</td><td>RREO dos 27 entes + DF, base do crawl</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/rreo_main.jsonl" download data-download="1" data-file="rreo_main.jsonl" data-type="jsonl" data-size="" data-cat="tesouro-siconfi">baixar · </a></td></tr>
-<tr><td class="fname">rreo_anual.jsonl</td><td>RREO dos entes, recorte anual</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/rreo_anual.jsonl" download data-download="1" data-file="rreo_anual.jsonl" data-type="jsonl" data-size="" data-cat="tesouro-siconfi">baixar · </a></td></tr>
-<tr><td class="fname">rreo_a.jsonl</td><td>RREO dos estados/DF, crawler, shard A</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/rreo_a.jsonl" download data-download="1" data-file="rreo_a.jsonl" data-type="jsonl" data-size="4,0 MB" data-cat="tesouro-siconfi">baixar · 4,0 MB</a></td></tr>
-<tr><td class="fname">rreo_b.jsonl</td><td>RREO dos estados/DF, crawler, shard B</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/rreo_b.jsonl" download data-download="1" data-file="rreo_b.jsonl" data-type="jsonl" data-size="3,8 MB" data-cat="tesouro-siconfi">baixar · 3,8 MB</a></td></tr>
-<tr><td class="fname">rreo_funcao_estados.jsonl</td><td>RREO Anexo 02 dos estados/DF, despesa por função (seção 3 da análise)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/rreo_funcao_estados.jsonl" download data-download="1" data-file="rreo_funcao_estados.jsonl" data-type="jsonl" data-size="4,7 MB" data-cat="tesouro-siconfi">baixar · 4,7 MB</a></td></tr>
-<tr><td class="fname">siconfi_rreo_uniao_b4_2025.json</td><td>RREO União, Anexo 01, 4º bimestre de 2025 (jan–ago)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/siconfi_rreo_uniao_b4_2025.json" download data-download="1" data-file="siconfi_rreo_uniao_b4_2025.json" data-type="json" data-size="" data-cat="tesouro-siconfi">baixar · </a></td></tr>
-<tr><td class="fname">siconfi_rreo_uniao_b4_2026.json</td><td>RREO União, Anexo 01, 4º bimestre de 2026 (jan–ago)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/siconfi_rreo_uniao_b4_2026.json" download data-download="1" data-file="siconfi_rreo_uniao_b4_2026.json" data-type="json" data-size="" data-cat="tesouro-siconfi">baixar · </a></td></tr>
-<tr><td class="fname">siconfi_rgf_rcl_estados.jsonl</td><td>RGF Anexo 03, receita corrente líquida dos estados (4 datas-chave)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/siconfi_rgf_rcl_estados.jsonl" download data-download="1" data-file="siconfi_rgf_rcl_estados.jsonl" data-type="jsonl" data-size="" data-cat="tesouro-siconfi">baixar · </a></td></tr>
-<tr><td class="fname">siconfi_rgf_rcl_2019_colunas.jsonl</td><td>RGF Anexo 03, RCL 2019 por período (colunas)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/siconfi_rgf_rcl_2019_colunas.jsonl" download data-download="1" data-file="siconfi_rgf_rcl_2019_colunas.jsonl" data-type="jsonl" data-size="" data-cat="tesouro-siconfi">baixar · </a></td></tr>
-<tr><td class="fname">estados_rgf_dcl.jsonl</td><td>RGF Anexo 02, dívida consolidada líquida dos estados</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/estados_rgf_dcl.jsonl" download data-download="1" data-file="estados_rgf_dcl.jsonl" data-type="jsonl" data-size="" data-cat="tesouro-siconfi">baixar · </a></td></tr>
-<tr><td class="fname">rreo_TO_2023_an01.json</td><td>RREO Anexo 01 de Tocantins (2023), amostra de checagem</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/rreo_TO_2023_an01.json" download data-download="1" data-file="rreo_TO_2023_an01.json" data-type="json" data-size="" data-cat="tesouro-siconfi">baixar · </a></td></tr>
-<tr><td class="fname">dpf_mensal.json</td><td>Dívida Pública Federal, estoque mensal (Tesouro Transparente)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/dpf_mensal.json" download data-download="1" data-file="dpf_mensal.json" data-type="json" data-size="" data-cat="tesouro-siconfi">baixar · </a></td></tr>
+<tr><td class="fname">uniao_rreo.jsonl</td><td>RREO da União, extração inicial (checagens)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/uniao_rreo.jsonl" download data-download="1" data-file="uniao_rreo.jsonl" data-type="jsonl" data-size="6 KB" data-cat="tesouro-siconfi">baixar<span class="vh"> RREO da União</span>&#160;· 6 KB</a></td></tr>
+<tr><td class="fname">uniao_natureza.jsonl</td><td>RREO Anexo 01 da União, despesa por grupo de natureza</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/uniao_natureza.jsonl" download data-download="1" data-file="uniao_natureza.jsonl" data-type="jsonl" data-size="38 KB" data-cat="tesouro-siconfi">baixar<span class="vh"> RREO Anexo 01 da União</span>&#160;· 38 KB</a></td></tr>
+<tr><td class="fname">uniao_funcoes.jsonl</td><td>RREO Anexo 02 da União, despesa por função</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/uniao_funcoes.jsonl" download data-download="1" data-file="uniao_funcoes.jsonl" data-type="jsonl" data-size="222 KB" data-cat="tesouro-siconfi">baixar<span class="vh"> RREO Anexo 02 da União</span>&#160;· 222 KB</a></td></tr>
+<tr><td class="fname">rreo_main.jsonl</td><td>RREO dos 27 entes + DF, base do crawl</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/rreo_main.jsonl" download data-download="1" data-file="rreo_main.jsonl" data-type="jsonl" data-size="654 KB" data-cat="tesouro-siconfi">baixar<span class="vh"> RREO dos 27 entes + DF</span>&#160;· 654 KB</a></td></tr>
+<tr><td class="fname">rreo_anual.jsonl</td><td>RREO dos entes, recorte anual</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/rreo_anual.jsonl" download data-download="1" data-file="rreo_anual.jsonl" data-type="jsonl" data-size="635 KB" data-cat="tesouro-siconfi">baixar<span class="vh"> RREO dos entes</span>&#160;· 635 KB</a></td></tr>
+<tr><td class="fname">rreo_a.jsonl</td><td>RREO dos estados/DF, crawler, shard A</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/rreo_a.jsonl" download data-download="1" data-file="rreo_a.jsonl" data-type="jsonl" data-size="4,0 MB" data-cat="tesouro-siconfi">baixar<span class="vh"> RREO dos estados/DF</span>&#160;· 4,0 MB</a></td></tr>
+<tr><td class="fname">rreo_b.jsonl</td><td>RREO dos estados/DF, crawler, shard B</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/rreo_b.jsonl" download data-download="1" data-file="rreo_b.jsonl" data-type="jsonl" data-size="3,8 MB" data-cat="tesouro-siconfi">baixar<span class="vh"> RREO dos estados/DF</span>&#160;· 3,8 MB</a></td></tr>
+<tr><td class="fname">rreo_funcao_estados.jsonl</td><td>RREO Anexo 02 dos estados/DF, despesa por função (seção 3 da análise)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/rreo_funcao_estados.jsonl" download data-download="1" data-file="rreo_funcao_estados.jsonl" data-type="jsonl" data-size="4,7 MB" data-cat="tesouro-siconfi">baixar<span class="vh"> RREO Anexo 02 dos estados/DF</span>&#160;· 4,7 MB</a></td></tr>
+<tr><td class="fname">siconfi_rreo_uniao_b4_2025.json</td><td>RREO União, Anexo 01, 4º bimestre de 2025 (jan–ago)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/siconfi_rreo_uniao_b4_2025.json" download data-download="1" data-file="siconfi_rreo_uniao_b4_2025.json" data-type="json" data-size="355 KB" data-cat="tesouro-siconfi">baixar<span class="vh"> RREO União</span>&#160;· 355 KB</a></td></tr>
+<tr><td class="fname">siconfi_rreo_uniao_b4_2026.json</td><td>RREO União, Anexo 01, 4º bimestre de 2026 (jan–ago)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/siconfi_rreo_uniao_b4_2026.json" download data-download="1" data-file="siconfi_rreo_uniao_b4_2026.json" data-type="json" data-size="353 KB" data-cat="tesouro-siconfi">baixar<span class="vh"> RREO União</span>&#160;· 353 KB</a></td></tr>
+<tr><td class="fname">siconfi_rgf_rcl_estados.jsonl</td><td>RGF Anexo 03, receita corrente líquida dos estados (4 datas-chave)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/siconfi_rgf_rcl_estados.jsonl" download data-download="1" data-file="siconfi_rgf_rcl_estados.jsonl" data-type="jsonl" data-size="10 KB" data-cat="tesouro-siconfi">baixar<span class="vh"> RGF Anexo 03</span>&#160;· 10 KB</a></td></tr>
+<tr><td class="fname">siconfi_rgf_rcl_2019_colunas.jsonl</td><td>RGF Anexo 03, RCL 2019 por período (colunas)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/siconfi_rgf_rcl_2019_colunas.jsonl" download data-download="1" data-file="siconfi_rgf_rcl_2019_colunas.jsonl" data-type="jsonl" data-size="5 KB" data-cat="tesouro-siconfi">baixar<span class="vh"> RGF Anexo 03</span>&#160;· 5 KB</a></td></tr>
+<tr><td class="fname">estados_rgf_dcl.jsonl</td><td>RGF Anexo 02, dívida consolidada líquida dos estados</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/estados_rgf_dcl.jsonl" download data-download="1" data-file="estados_rgf_dcl.jsonl" data-type="jsonl" data-size="15 KB" data-cat="tesouro-siconfi">baixar<span class="vh"> RGF Anexo 02</span>&#160;· 15 KB</a></td></tr>
+<tr><td class="fname">rreo_TO_2023_an01.json</td><td>RREO Anexo 01 de Tocantins (2023), amostra de checagem</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/rreo_TO_2023_an01.json" download data-download="1" data-file="rreo_TO_2023_an01.json" data-type="json" data-size="238 KB" data-cat="tesouro-siconfi">baixar<span class="vh"> RREO Anexo 01 de Tocantins (2023)</span>&#160;· 238 KB</a></td></tr>
+<tr><td class="fname">dpf_mensal.json</td><td>Dívida Pública Federal, estoque mensal (Tesouro Transparente)</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/tesouro-siconfi/dpf_mensal.json" download data-download="1" data-file="dpf_mensal.json" data-type="json" data-size="3 KB" data-cat="tesouro-siconfi">baixar<span class="vh"> Dívida Pública Federal</span>&#160;· 3 KB</a></td></tr>
         </tbody>
       </table>
     </div>
@@ -167,7 +240,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,B
   </section>
   <section class="chap" id="fonte-federal-reserve" data-track-section="fontes-federal-reserve" data-track-name="Federal Reserve">
     <div class="chap-hd">
-      <div class="kicker">Fonte 5 de 5 · Federal Reserve</div>
+      <div class="kicker">Fonte 5 de 7 · Federal Reserve</div>
       <h2>Federal Reserve, o juro dos EUA</h2>
     </div>
     <p class="lead">Do banco central americano, via <b>NY Fed</b> (markets.newyorkfed.org): a taxa efetiva dos Fed funds, série diária, o juro que move o mundo e aparece na seção 5 da análise.</p>
@@ -175,43 +248,94 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,B
       <table class="dados-tbl">
         <thead><tr><th style="width:24%">Arquivo</th><th>O que é</th><th>Usado em</th><th>Baixar</th></tr></thead>
         <tbody>
-<tr><td class="fname">fed_effr.json</td><td>Taxa efetiva dos Fed funds (EFFR), série diária, o juro básico dos EUA</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/federal-reserve/fed_effr.json" download data-download="1" data-file="fed_effr.json" data-type="json" data-size="" data-cat="federal-reserve">baixar · </a></td></tr>
+<tr><td class="fname">fed_effr.json</td><td>Taxa efetiva dos Fed funds (EFFR), série diária, o juro básico dos EUA</td><td style="white-space:nowrap"><span class="chipu">Governo Lula × Bolsonaro</span></td><td><a class="dl" href="/dados/federal-reserve/fed_effr.json" download data-download="1" data-file="fed_effr.json" data-type="json" data-size="543 KB" data-cat="federal-reserve">baixar<span class="vh"> Taxa efetiva dos Fed funds (EFFR)</span>&#160;· 543 KB</a></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="ress">Origem: markets.newyorkfed.org · 1 arquivos · 543 KB</p>
+    <p class="ress">Origem: markets.newyorkfed.org · 1 arquivo · 543 KB</p>
   </section>
-  <div class="explain" style="border-left-color:var(--c2)">
-    <h4>Notas</h4>
+  <section class="chap" id="fonte-tesouro-rtn" data-track-section="fontes-tesouro-rtn" data-track-name="Tesouro Nacional (RTN)">
+    <div class="chap-hd">
+      <div class="kicker">Fonte 6 de 7 · Tesouro Nacional</div>
+      <h2>Tesouro Nacional, o Resultado do Tesouro (RTN) de 2022 a 2025</h2>
+    </div>
+    <p class="lead">Da <b>Secretaria do Tesouro Nacional</b> (tesouro.gov.br e tesourotransparente.gov.br): o boletim e a apresentação de dezembro de cada ano, de 2022 a 2025, e a série histórica em planilha. Explicam o que está por trás do quesito <b>Controle do gasto</b> (precatórios, itens fora da meta) nos dois governos.</p>
+    <div class="tbl-card">
+      <table class="dados-tbl">
+        <thead><tr><th style="width:24%">Arquivo</th><th>O que é</th><th>Usado em</th><th>Baixar</th></tr></thead>
+        <tbody>
+<tr><td class="fname">tesouro_rtn_dez2022_boletim.pdf</td><td>Resultado do Tesouro Nacional (RTN) de dezembro de 2022, boletim · Tesouro Nacional (Nota 15: gastos da EC 123/2022)</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/tesouro-rtn/tesouro_rtn_dez2022_boletim.pdf" download data-download="1" data-file="tesouro_rtn_dez2022_boletim.pdf" data-type="pdf" data-size="1,3 MB" data-cat="tesouro-rtn">baixar<span class="vh"> Resultado do Tesouro Nacional (RTN) de dezembro de 2022</span>&#160;· 1,3 MB</a></td></tr>
+<tr><td class="fname">tesouro_rtn_dez2022_apresentacao.pdf</td><td>RTN de dezembro de 2022, apresentação · Tesouro Nacional</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/tesouro-rtn/tesouro_rtn_dez2022_apresentacao.pdf" download data-download="1" data-file="tesouro_rtn_dez2022_apresentacao.pdf" data-type="pdf" data-size="979 KB" data-cat="tesouro-rtn">baixar<span class="vh"> RTN de dezembro de 2022</span>&#160;· 979 KB</a></td></tr>
+<tr><td class="fname">tesouro_rtn_dez2023_boletim.pdf</td><td>RTN de dezembro de 2023, boletim · Tesouro Nacional</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/tesouro-rtn/tesouro_rtn_dez2023_boletim.pdf" download data-download="1" data-file="tesouro_rtn_dez2023_boletim.pdf" data-type="pdf" data-size="1,1 MB" data-cat="tesouro-rtn">baixar<span class="vh"> RTN de dezembro de 2023</span>&#160;· 1,1 MB</a></td></tr>
+<tr><td class="fname">tesouro_rtn_dez2023_apresentacao.pdf</td><td>RTN de dezembro de 2023, apresentação · Tesouro Nacional (pagamento dos precatórios em dez/2023)</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/tesouro-rtn/tesouro_rtn_dez2023_apresentacao.pdf" download data-download="1" data-file="tesouro_rtn_dez2023_apresentacao.pdf" data-type="pdf" data-size="1,1 MB" data-cat="tesouro-rtn">baixar<span class="vh"> RTN de dezembro de 2023</span>&#160;· 1,1 MB</a></td></tr>
+<tr><td class="fname">tesouro_rtn_dez2024_boletim.pdf</td><td>RTN de dezembro de 2024, boletim · Tesouro Nacional</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/tesouro-rtn/tesouro_rtn_dez2024_boletim.pdf" download data-download="1" data-file="tesouro_rtn_dez2024_boletim.pdf" data-type="pdf" data-size="882 KB" data-cat="tesouro-rtn">baixar<span class="vh"> RTN de dezembro de 2024</span>&#160;· 882 KB</a></td></tr>
+<tr><td class="fname">tesouro_rtn_dez2024_apresentacao.pdf</td><td>RTN de dezembro de 2024, apresentação · Tesouro Nacional (itens fora da meta de 2024)</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/tesouro-rtn/tesouro_rtn_dez2024_apresentacao.pdf" download data-download="1" data-file="tesouro_rtn_dez2024_apresentacao.pdf" data-type="pdf" data-size="970 KB" data-cat="tesouro-rtn">baixar<span class="vh"> RTN de dezembro de 2024</span>&#160;· 970 KB</a></td></tr>
+<tr><td class="fname">tesouro_rtn_dez2025_boletim.pdf</td><td>RTN de dezembro de 2025, boletim · Tesouro Nacional</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/tesouro-rtn/tesouro_rtn_dez2025_boletim.pdf" download data-download="1" data-file="tesouro_rtn_dez2025_boletim.pdf" data-type="pdf" data-size="889 KB" data-cat="tesouro-rtn">baixar<span class="vh"> RTN de dezembro de 2025</span>&#160;· 889 KB</a></td></tr>
+<tr><td class="fname">tesouro_rtn_dez2025_apresentacao.pdf</td><td>RTN de dezembro de 2025, apresentação · Tesouro Nacional (itens fora da meta de 2025)</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/tesouro-rtn/tesouro_rtn_dez2025_apresentacao.pdf" download data-download="1" data-file="tesouro_rtn_dez2025_apresentacao.pdf" data-type="pdf" data-size="945 KB" data-cat="tesouro-rtn">baixar<span class="vh"> RTN de dezembro de 2025</span>&#160;· 945 KB</a></td></tr>
+<tr><td class="fname">tesouro_rtn_serie_historica_dez2025.xlsx</td><td>RTN, série histórica em planilha, até dezembro de 2025 · Tesouro Nacional</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/tesouro-rtn/tesouro_rtn_serie_historica_dez2025.xlsx" download data-download="1" data-file="tesouro_rtn_serie_historica_dez2025.xlsx" data-type="xlsx" data-size="4,2 MB" data-cat="tesouro-rtn">baixar<span class="vh"> RTN</span>&#160;· 4,2 MB</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ress">Origem: cdn.tesouro.gov.br · thot-arquivos.tesouro.gov.br · 9 arquivos · 12,4 MB</p>
+  </section>
+  <section class="chap" id="fonte-legislacao-fiscal" data-track-section="fontes-legislacao-fiscal" data-track-name="Leis, notas técnicas e STF">
+    <div class="chap-hd">
+      <div class="kicker">Fonte 7 de 7 · Planalto, Congresso e STF</div>
+      <h2>As regras do gasto: emendas, lei do arcabouço, notas técnicas e a decisão do STF</h2>
+    </div>
+    <p class="lead">Textos oficiais das <b>emendas constitucionais</b> e da <b>lei complementar</b> que mudaram as regras do gasto entre 2021 e 2023 (planalto.gov.br), as <b>notas técnicas</b> das consultorias de orçamento da Câmara e do Senado e a <b>notícia do STF</b> (Supremo Tribunal Federal) sobre os precatórios (dívidas do governo reconhecidas pela Justiça). Base das nuances do quesito <b>Controle do gasto</b>, para os dois governos.</p>
+    <div class="tbl-card">
+      <table class="dados-tbl">
+        <thead><tr><th style="width:24%">Arquivo</th><th>O que é</th><th>Usado em</th><th>Baixar</th></tr></thead>
+        <tbody>
+<tr><td class="fname">planalto_ec113.htm</td><td>Emenda Constitucional 113/2021 (texto oficial no Planalto): muda o cálculo do teto de gastos · Presidência da República</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/legislacao-fiscal/planalto_ec113.htm" download data-download="1" data-file="planalto_ec113.htm" data-type="htm" data-size="38 KB" data-cat="legislacao-fiscal">baixar<span class="vh"> Emenda Constitucional 113/2021 (texto oficial no Planalto): muda o cálculo do teto de…</span>&#160;· 38 KB</a></td></tr>
+<tr><td class="fname">planalto_ec114.htm</td><td>Emenda Constitucional 114/2021 (texto oficial no Planalto): limite para pagar precatórios · Presidência da República</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/legislacao-fiscal/planalto_ec114.htm" download data-download="1" data-file="planalto_ec114.htm" data-type="htm" data-size="52 KB" data-cat="legislacao-fiscal">baixar<span class="vh"> Emenda Constitucional 114/2021 (texto oficial no Planalto): limite para pagar precatórios…</span>&#160;· 52 KB</a></td></tr>
+<tr><td class="fname">planalto_ec123.htm</td><td>Emenda Constitucional 123, de 14/07/2022 (texto oficial no Planalto): auxílios de 2022 fora do teto · Presidência da República</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/legislacao-fiscal/planalto_ec123.htm" download data-download="1" data-file="planalto_ec123.htm" data-type="htm" data-size="44 KB" data-cat="legislacao-fiscal">baixar<span class="vh"> Emenda Constitucional 123</span>&#160;· 44 KB</a></td></tr>
+<tr><td class="fname">planalto_ec126.htm</td><td>Emenda Constitucional 126/2022, a “PEC da Transição” (PEC = Proposta de Emenda à Constituição) (texto oficial no Planalto): amplia o teto de 2023 · Presidência da República</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/legislacao-fiscal/planalto_ec126.htm" download data-download="1" data-file="planalto_ec126.htm" data-type="htm" data-size="39 KB" data-cat="legislacao-fiscal">baixar<span class="vh"> Emenda Constitucional 126/2022</span>&#160;· 39 KB</a></td></tr>
+<tr><td class="fname">planalto_lc200_2023.htm</td><td>Lei Complementar 200/2023, o arcabouço fiscal (texto oficial no Planalto): substitui o teto de gastos · Presidência da República</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/legislacao-fiscal/planalto_lc200_2023.htm" download data-download="1" data-file="planalto_lc200_2023.htm" data-type="htm" data-size="99 KB" data-cat="legislacao-fiscal">baixar<span class="vh"> Lei Complementar 200/2023</span>&#160;· 99 KB</a></td></tr>
+<tr><td class="fname">camara_conof_nota_informativa_pec23_2021_aprovada_sf.pdf</td><td>Nota Informativa 7/2021 sobre a PEC 23/2021 aprovada no Senado, dez/2021 · Câmara dos Deputados (Consultoria de Orçamento)</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/legislacao-fiscal/camara_conof_nota_informativa_pec23_2021_aprovada_sf.pdf" download data-download="1" data-file="camara_conof_nota_informativa_pec23_2021_aprovada_sf.pdf" data-type="pdf" data-size="1,4 MB" data-cat="legislacao-fiscal">baixar<span class="vh"> Nota Informativa 7/2021 sobre a PEC 23/2021 aprovada no Senado</span>&#160;· 1,4 MB</a></td></tr>
+<tr><td class="fname">conorf_conof_nt_conjunta_5_2022_ploa2023.pdf</td><td>Nota Técnica Conjunta 5/2022, subsídios ao Orçamento de 2023 (PLOA 2023), set/2022 · Consultorias de Orçamento da Câmara e do Senado</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/legislacao-fiscal/conorf_conof_nt_conjunta_5_2022_ploa2023.pdf" download data-download="1" data-file="conorf_conof_nt_conjunta_5_2022_ploa2023.pdf" data-type="pdf" data-size="2,5 MB" data-cat="legislacao-fiscal">baixar<span class="vh"> Nota Técnica Conjunta 5/2022</span>&#160;· 2,5 MB</a></td></tr>
+<tr><td class="fname">senado_nt48_2023_mp1200_precatorios.pdf</td><td>Nota Técnica 48/2023 sobre a MP 1.200/2023 (pagamento de precatórios), 27/12/2023 · Senado Federal (Consultoria de Orçamento)</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/legislacao-fiscal/senado_nt48_2023_mp1200_precatorios.pdf" download data-download="1" data-file="senado_nt48_2023_mp1200_precatorios.pdf" data-type="pdf" data-size="579 KB" data-cat="legislacao-fiscal">baixar<span class="vh"> Nota Técnica 48/2023 sobre a MP 1.200/2023 (pagamento de precatórios)</span>&#160;· 579 KB</a></td></tr>
+<tr><td class="fname">stf_noticia_521218_adis_7047_7064_2023-12-01.html</td><td>Notícia do STF de 01/12/2023 sobre o julgamento das ADIs 7047 e 7064 (precatórios), página salva como publicada · Supremo Tribunal Federal</td><td style="white-space:nowrap"><span class="chipu">Governos — Controle do gasto</span></td><td><a class="dl" href="/dados/legislacao-fiscal/stf_noticia_521218_adis_7047_7064_2023-12-01.html" download data-download="1" data-file="stf_noticia_521218_adis_7047_7064_2023-12-01.html" data-type="html" data-size="61 KB" data-cat="legislacao-fiscal">baixar<span class="vh"> Notícia do STF de 01/12/2023 sobre o julgamento das ADIs 7047 e 7064 (precatórios)</span>&#160;· 61 KB</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ress">Origem: planalto.gov.br · camara.leg.br · senado.leg.br · portal.stf.jus.br · 9 arquivos · 4,7 MB</p>
+  </section>
+  <div class="explain">
+    <h2>Notas</h2>
     <ul>
-      <li><b>Extração:</b> os dados foram baixados entre 06 e 09/10/2026; as análises cortam as séries no último mês completo (set/2026), mesmo quando o arquivo bruto tem pontos posteriores.</li>
+      <li><b>Extração:</b> os dados foram baixados entre 06 e 09/10/2026, e os documentos do Tesouro (RTN), as leis, as notas técnicas e a notícia do STF em 15/10/2026; as análises cortam as séries no último mês completo (set/2026), mesmo quando o arquivo bruto tem pontos posteriores.</li>
       <li><b>Usado em:</b> indica em qual das três análises cada arquivo entra, Governo Lula × Bolsonaro · Propostas 2026 · Promessas e Realizações Lula × Bolsonaro.</li>
-      <li><b>Origem:</b> portais oficiais, TSE, Banco Central, IBGE e Tesouro Nacional (Brasil) e Federal Reserve / NY Fed (EUA).</li>
+      <li><b>Origem:</b> portais oficiais, TSE, Banco Central, IBGE, Tesouro Nacional, Presidência da República (Planalto), Câmara dos Deputados, Senado Federal e STF (Brasil) e Federal Reserve / NY Fed (EUA).</li>
     </ul>
   </div>
 </div>
+</main>
 <footer class="sitefoot">
   <div class="sf-in">
     <div class="sf-brand">
       <img src="/assets/img/logo-400.png" alt="Bora pros dados Brasil">
       <p>Análises descritivas com dados públicos oficiais do Brasil, sem juízo político. Tudo com fonte aberta e os arquivos originais disponíveis para download.</p>
     </div>
-    <div class="sf-col"><h4>Quem sou</h4>
+    <div class="sf-col" id="quem-fez"><h2>Quem sou</h2>
       <p>Profissional da área de tecnologia há 16 anos e atuo como Gerente de Desenvolvimento de Software. Lidero o time responsável pela plataformização e disponibilização de dados por diferentes meios em uma Big Tech brasileira, referência no mercado, atuando em um ambiente de altíssima volumetria e escala.</p>
     </div>
     <div class="sf-col-group">
-    <div class="sf-col"><h4>Análises</h4>
+    <div class="sf-col"><h2>Análises</h2>
       <a href="/">Governo Lula × Bolsonaro</a>
       <a href="/propostas/">Propostas 2026</a>
       <a href="/balanco/">Promessas e Realizações Lula × Bolsonaro</a>
     </div>
-    <div class="sf-col"><h4>Dados</h4>
-      <a href="/fontes/">Todas as fontes (32 arquivos)</a>
+    <div class="sf-col"><h2>Método e dados</h2>
+      <a href="/sobre/">Sobre e método</a>
+      <a href="/#apendice">Como calculamos</a>
+      <a href="/fontes/">Dados abertos (50 arquivos)</a>
       <a href="/dados/SHA256SUMS.txt">Checksums (SHA-256)</a>
     </div>
     </div>
 </div>
-  <div class="sf-base">© 2026 Bora pros dados Brasil · dados públicos oficiais · <a href="/dados/SHA256SUMS.txt">integridade dos arquivos (SHA-256)</a></div>
+  <div class="sf-base">© 2026 Bora pros dados Brasil · dados públicos oficiais · atualizado em <time datetime="__UPDATED_ISO__">__UPDATED__</time> · <a href="/dados/SHA256SUMS.txt">integridade dos arquivos (SHA-256)</a></div>
 </footer>
 </body>
 </html>

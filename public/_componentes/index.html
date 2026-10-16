@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="/assets/img/favicon.ico" sizes="48x48">
+<meta name="theme-color" content="#02522b">
+<title>Componentes de interface · Bora pros dados Brasil</title>
+<style>
+:root{--bg:#f7f7f8;--card:#ffffff;--text:#18181b;--muted:#71717a;--border:#e4e4e7}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);line-height:1.55}
+html{scroll-behavior:smooth}
+.wrap{max-width:1180px;margin:0 auto;padding:26px 20px 64px}
+.topnav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.topnav .in{max-width:1180px;margin:0 auto;padding:8px 20px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.topnav .in::-webkit-scrollbar{display:none}
+.topnav a{flex:0 0 auto;font-size:12.5px;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.prog{height:3px;background:linear-gradient(90deg,var(--c1),var(--c2));width:0}
+.chap{margin-top:46px;scroll-margin-top:56px}
+.chap-hd{padding-top:14px;margin-bottom:14px}
+.kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.chap-hd h2{margin:6px 0 8px}
+.lead{font-size:15.5px;max-width:78ch}
+.demo-nota{font-size:14px;color:#3f3f46;background:#fff;border:1px dashed #a1a1aa;border-radius:12px;padding:10px 14px;margin:10px 0 14px;max-width:78ch}
+.demo-nota code, .demo-code code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px}
+.demo-code{background:#18181b;color:#e4e4e7;border-radius:12px;padding:12px 14px;overflow:auto;font-size:12.5px;line-height:1.5;margin:10px 0 0;white-space:pre}
+.tok{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:8px 0}
+.tok div{background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px;font-size:13px}
+.tok i{display:block;height:34px;border-radius:8px;margin-bottom:6px}
+.tok code{font-size:12.5px}
+</style>
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>window.SITE_CONFIG={"gaId":"","siteUrl":"__SITE_URL__","pageId":"componentes","consent":"none"};</script>
+<script defer src="/assets/js/analytics.js"></script>
+<link rel="stylesheet" href="/assets/css/share.css">
+<script defer src="/assets/js/share.js"></script>
+<script defer src="/assets/js/charts.js"></script>
+<script defer src="/assets/js/ui.js"></script>
+</head>
+<body>
+<header class="sitebar">
+  <div class="sb-in">
+    <a class="sb-brand" href="/" aria-label="Bora pros dados Brasil, início"><img src="/assets/img/logo-400.png" alt="Bora pros dados Brasil" width="200" height="113"></a>
+    <a href="/fontes/" class="sb-cta"><svg class="sb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg><span class="t-longo">Baixar fontes →</span> <span class="t-curto">Fontes</span></a>
+    <nav class="sb-nav" aria-label="Páginas do site">
+      <a href="/"><span class="t-longo">Governo Lula × Bolsonaro</span> <span class="t-curto">Governos</span></a>
+      <a href="/propostas/">Propostas 2026</a>
+      <a href="/balanco/"><span class="t-longo">Promessas e Realizações Lula × Bolsonaro</span> <span class="t-curto">Promessas</span></a>
+    </nav>
+  </div>
+</header>
+<nav class="topnav" aria-label="Seções">
+  <div class="in">
+    <a href="#topo">Início</a>
+    <a href="#tokens">Cores</a>
+    <a href="#resumo">Resumo</a>
+    <a href="#vereditos">Vereditos</a>
+    <a href="#recolhivel">Recolhível</a>
+    <a href="#compartilhar">Compartilhar</a>
+    <a href="#graficos">Gráficos</a>
+    <a href="#metodo">Método</a>
+  </div>
+  <div class="prog" id="prog"></div>
+</nav>
+<div class="q-cred-wrap">
+  <div class="q-cred" role="note" aria-label="Sobre a confiabilidade destes dados">
+    <span class="q-cred-selo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3.5v6c0 5-3.4 8.8-8 10.5-4.6-1.7-8-5.5-8-10.5v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg> Só fontes oficiais</span>
+    <span class="q-cred-fontes"><b>IBGE</b> · <b>Banco Central</b> · <b>Tesouro Nacional</b></span>
+    <span class="q-cred-data">Atualizado em <time datetime="__UPDATED_ISO__">__UPDATED__</time></span>
+    <span class="q-cred-links"><a href="#metodo">Como calculamos</a><a href="/fontes/">Baixar os dados</a><a href="#quem-fez">Quem fez</a></span>
+  </div>
+</div>
+
+<div class="wrap" id="topo">
+  <p class="kicker">Uso interno · fora do índice</p>
+  <h1 style="margin:6px 0 8px;font-size:clamp(26px,3vw,34px);line-height:1.15;letter-spacing:-.02em">Componentes de interface</h1>
+  <p class="lead">Peças prontas para as páginas de análise, com números reais copiados das páginas e da matriz de vereditos. Cabeçalho, menu de seções, faixa de credibilidade, rodapé e barra inferior (no celular, depois de rolar) já estão nesta página como em todas as outras.</p>
+  <div class="demo-nota">Arquivos: <code>/assets/css/site.css</code> (seção "FUNDAÇÃO UI"), <code>/assets/css/share.css</code>, <code>/assets/js/ui.js</code>, <code>/assets/js/share.js</code>, <code>/assets/js/charts.js</code>. Todos os componentes funcionam sem JS (o <code>&lt;details&gt;</code> é nativo); o JS acrescenta compartilhar, o ajuste dos gráficos ao abrir e a barra inferior.</div>
+
+  <!-- ======================================================= tokens -->
+  <section class="chap" id="tokens" data-track-section="demo-tokens" data-track-name="Cores">
+    <div class="chap-hd"><div class="kicker">Cores e formas</div><h2>Tokens dos lados</h2></div>
+    <p class="lead">Ordem fixa: <span class="gb">● Governo Bolsonaro / Flávio</span> sempre primeiro (à esquerda ou em cima) e <span class="gl">■ Governo Lula / Lula</span> depois. Texto pequeno colorido usa sempre <code>--gb-txt</code>/<code>--gl-txt</code>. As variáveis antigas <code>--c1</code>/<code>--c2</code> já apontam para as cores novas.</p>
+    <div class="tok">
+      <div><i style="background:var(--gb)"></i><code>--gb</code> #1479B0<br>barras, bordas, selos</div>
+      <div><i style="background:var(--gl)"></i><code>--gl</code> #7250FB<br>barras, bordas, selos</div>
+      <div><i style="background:var(--gb-txt)"></i><code>--gb-txt</code> #0e5f8c<br>texto (6,9:1)</div>
+      <div><i style="background:var(--gl-txt)"></i><code>--gl-txt</code> #5a36e0<br>texto (6,9:1)</div>
+      <div><i style="background:var(--gb-tint)"></i><code>--gb-tint</code><br>fundo do vencedor (12%)</div>
+      <div><i style="background:var(--gl-tint)"></i><code>--gl-tint</code><br>fundo do vencedor (12%)</div>
+      <div><i style="background:var(--ctx-tint);border:1.5px dashed #a1a1aa"></i><code>--ctx-tint</code><br>contexto, não conta ponto</div>
+      <div><i style="background:var(--marca)"></i><code>--marca</code> #02522b<br>botões e links de ação</div>
+    </div>
+  </section>
+
+  <!-- ======================================================= .q-resumo -->
+  <section class="chap" id="secao-resumo" data-track-section="demo-resumo" data-track-name="Resumo em 1 minuto">
+    <div class="chap-hd"><div class="kicker">.q-resumo</div><h2>Resumo em 1 minuto</h2></div>
+    <p class="lead">Dois blocos com o mesmo tamanho, a mesma tipografia e o mesmo número de elementos por linha. A ordem dos blocos segue a ordem fixa dos lados; as linhas seguem a ordem dos temas.</p>
+
+    <section class="q-resumo" id="resumo" aria-labelledby="resumo-t">
+      <p class="q-resumo-kicker">Resumo em 1 minuto</p>
+      <h2 class="q-resumo-t" id="resumo-t">Governo Bolsonaro (2019–22) × Governo Lula (2023–25): quem foi melhor em cada quesito</h2>
+      <p class="q-resumo-sub">Mesma régua para os dois: média de cada governo, com o critério escrito em cada linha.</p>
+      <div class="q-blocos">
+        <article class="q-bloco" data-lado="b" aria-labelledby="qb-contas">
+          <header class="q-bloco-hd">
+            <h3 class="q-bloco-t" id="qb-contas">Contas públicas</h3>
+            <span class="q-bloco-n">3 quesitos</span>
+            <span class="q-bloco-lider"><i class="mk mk--b" aria-hidden="true"></i>Governo Bolsonaro à frente</span>
+          </header>
+          <ul class="q-linhas">
+            <li class="q-linha">
+              <div class="q-linha-hd"><span class="q-linha-nome"><a href="#q-gasto">Controle do gasto</a></span><span class="q-linha-crit">menor é melhor</span><span class="q-forca q-forca--apertada">apertada</span></div>
+              <dl class="q-vals">
+                <div class="q-v q-v--b is-win"><dt><i class="mk mk--b" aria-hidden="true"></i>Bolsonaro</dt><dd>R$ 2,67 tri</dd></div>
+                <div class="q-v q-v--l"><dt><i class="mk mk--l" aria-hidden="true"></i>Lula</dt><dd>R$ 3,02 tri</dd></div>
+              </dl>
+              <p class="q-ress"><b>O que mudaria:</b> em % do PIB contando 2020, 25,0% × 24,5%.</p>
+            </li>
+            <li class="q-linha">
+              <div class="q-linha-hd"><span class="q-linha-nome"><a href="#q-divida">Dívida pública</a></span><span class="q-linha-crit">cair é melhor</span><span class="q-forca">clara</span></div>
+              <dl class="q-vals">
+                <div class="q-v q-v--b is-win"><dt><i class="mk mk--b" aria-hidden="true"></i>Bolsonaro</dt><dd>−3,6 pontos</dd></div>
+                <div class="q-v q-v--l"><dt><i class="mk mk--l" aria-hidden="true"></i>Lula (até ago/26)</dt><dd>+11,2 pontos</dd></div>
+              </dl>
+            </li>
+            <li class="q-linha">
+              <div class="q-linha-hd"><span class="q-linha-nome">Conta de juros</span><span class="q-linha-crit">menor é melhor</span><span class="q-forca">clara</span></div>
+              <dl class="q-vals">
+                <div class="q-v q-v--b is-win"><dt><i class="mk mk--b" aria-hidden="true"></i>Bolsonaro</dt><dd>5,0% do PIB</dd></div>
+                <div class="q-v q-v--l"><dt><i class="mk mk--l" aria-hidden="true"></i>Lula</dt><dd>7,5% do PIB</dd></div>
+              </dl>
+            </li>
+          </ul>
+        </article>
+        <article class="q-bloco" data-lado="l" aria-labelledby="qb-economia">
+          <header class="q-bloco-hd">
+            <h3 class="q-bloco-t" id="qb-economia">Economia e renda</h3>
+            <span class="q-bloco-n">4 quesitos</span>
+            <span class="q-bloco-lider"><i class="mk mk--l" aria-hidden="true"></i>Governo Lula à frente</span>
+          </header>
+          <ul class="q-linhas">
+            <li class="q-linha">
+              <div class="q-linha-hd"><span class="q-linha-nome">Crescimento</span><span class="q-linha-crit">maior é melhor</span><span class="q-forca">clara</span></div>
+              <dl class="q-vals">
+                <div class="q-v q-v--b"><dt><i class="mk mk--b" aria-hidden="true"></i>Bolsonaro</dt><dd>1,4% ao ano</dd></div>
+                <div class="q-v q-v--l is-win"><dt><i class="mk mk--l" aria-hidden="true"></i>Lula</dt><dd>3,0% ao ano</dd></div>
+              </dl>
+            </li>
+            <li class="q-linha">
+              <div class="q-linha-hd"><span class="q-linha-nome">Inflação</span><span class="q-linha-crit">menor é melhor</span><span class="q-forca q-forca--apertada">apertada</span></div>
+              <dl class="q-vals">
+                <div class="q-v q-v--b"><dt><i class="mk mk--b" aria-hidden="true"></i>Bolsonaro</dt><dd>6,1% ao ano</dd></div>
+                <div class="q-v q-v--l is-win"><dt><i class="mk mk--l" aria-hidden="true"></i>Lula</dt><dd>4,6% ao ano</dd></div>
+              </dl>
+              <p class="q-ress"><b>O que mudaria:</b> sem 2020–21, 5,0% × 4,6%.</p>
+            </li>
+            <li class="q-linha">
+              <div class="q-linha-hd"><span class="q-linha-nome"><a href="#q-emprego">Emprego</a></span><span class="q-linha-crit">menos desemprego é melhor</span><span class="q-forca">clara</span></div>
+              <dl class="q-vals">
+                <div class="q-v q-v--b"><dt><i class="mk mk--b" aria-hidden="true"></i>Bolsonaro</dt><dd>12,1%</dd></div>
+                <div class="q-v q-v--l is-win"><dt><i class="mk mk--l" aria-hidden="true"></i>Lula</dt><dd>7,0%</dd></div>
+              </dl>
+            </li>
+            <li class="q-linha">
+              <div class="q-linha-hd"><span class="q-linha-nome">Proteção social</span><span class="q-linha-crit">maior é melhor · sem 2020</span><span class="q-forca q-forca--apertada">apertada</span></div>
+              <dl class="q-vals">
+                <div class="q-v q-v--b"><dt><i class="mk mk--b" aria-hidden="true"></i>Bolsonaro</dt><dd>R$ 188,1 bi</dd></div>
+                <div class="q-v q-v--l is-win"><dt><i class="mk mk--l" aria-hidden="true"></i>Lula</dt><dd>R$ 293,5 bi</dd></div>
+              </dl>
+              <p class="q-ress"><b>O que mudaria:</b> com 2020 na conta, R$ 282,1 bi × R$ 293,5 bi (+4,1%).</p>
+            </li>
+          </ul>
+        </article>
+      </div>
+      <div class="q-ctx">
+        <div class="q-linha">
+          <div class="q-linha-hd"><span class="q-linha-nome"><a href="#q-selic">Juro básico (Selic)</a></span><span class="q-linha-crit">contexto, não conta ponto</span></div>
+          <dl class="q-vals">
+            <div class="q-v q-v--b"><dt><i class="mk mk--b" aria-hidden="true"></i>Bolsonaro</dt><dd>6,5%</dd></div>
+            <div class="q-v q-v--l"><dt><i class="mk mk--l" aria-hidden="true"></i>Lula</dt><dd>12,9%</dd></div>
+          </dl>
+        </div>
+      </div>
+      <p class="q-resumo-pe">7 quesitos: 3 e 4. Cada quesito vale 1 ponto, pela média de cada governo (2019–22 × 2023–25). Fontes: IBGE, Banco Central e Tesouro Nacional. <a href="#metodo">Como calculamos ›</a></p>
+      <p class="q-resumo-url">boraprosdadosbrasil.netlify.app · atualizado em __UPDATED__</p>
+      <div class="share" data-share-section="placar" data-share-placement="placar" data-share-anchor="resumo" data-share-name="o resumo"
+           data-share-text="📊 Governo Bolsonaro (2019-22) × Governo Lula (2023-25), só dados oficiais: na economia e renda, Lula à frente (crescimento, inflação, emprego, proteção social); nas contas públicas, Bolsonaro à frente (controle do gasto, dívida, conta de juros). Fontes: IBGE, Banco Central, Tesouro."></div>
+    </section>
+  </section>
+
+  <!-- ======================================================= .vrd -->
+  <section class="chap" id="vereditos" data-track-section="demo-vereditos" data-track-name="Cards de veredito">
+    <div class="chap-hd"><div class="kicker">.vrd · .vbar · .q-forca</div><h2>Cards de veredito</h2></div>
+    <p class="lead">Layout idêntico para qualquer vencedor; o valor de quem perde tem o mesmo tamanho. O gráfico fica em "Ver gráfico e detalhes" e é redesenhado ao abrir.</p>
+    <div class="vrd-grid">
+      <article class="vrd" id="q-divida" data-win="b">
+        <p class="vrd-tema">Dívida pública</p>
+        <h3 class="vrd-q">Em qual governo a dívida caiu?</h3>
+        <div class="vrd-vals">
+          <div class="vrd-val vrd-val--b is-win"><span class="who"><i class="mk mk--b" aria-hidden="true"></i>Gov. Bolsonaro</span><b>−3,6</b><small>pontos do PIB · 75,3% → 71,7%</small></div>
+          <div class="vrd-val vrd-val--l"><span class="who"><i class="mk mk--l" aria-hidden="true"></i>Gov. Lula</span><b>+11,2</b><small>pontos do PIB · 71,7% → 82,9%</small></div>
+        </div>
+        <p class="vrd-crit">Variação da dívida bruta do governo · <b>cair é melhor</b></p>
+        <div class="vrd-win-row"><p class="vrd-win">✓ Governo Bolsonaro</p><span class="q-forca">vitória clara</span></div>
+        <p class="vrd-ress"><b>Ressalva:</b> Lula, parcial até ago/26 (até dez/2025: +7,0 pontos).</p>
+        <p class="vrd-src">Fonte: Banco Central, DBGG (SGS 13762) · dez/18 → dez/22 × dez/22 → ago/26 · <a href="#metodo">Como calculamos ›</a></p>
+        <div class="vrd-acoes">
+          <details class="vrd-det" data-abrir-desktop>
+            <summary data-track="detalhes_abertos" data-track-label="q-divida"><span class="ao-abrir">Ver gráfico e detalhes</span><span class="ao-fechar">Fechar detalhes</span></summary>
+            <div class="q-mais-corpo"><div class="viz" id="g-divida"></div></div>
+          </details>
+          <div class="share share--mini" data-share-variant="mini" data-share-section="divida" data-share-placement="card" data-share-anchor="q-divida" data-share-name="o dado da dívida"
+               data-share-text="📊 Dívida pública (% do PIB): caiu de 75,3% para 71,7% no Governo Bolsonaro (dez/18 a dez/22) × subiu de 71,7% para 82,9% no Governo Lula (até ago/26). Fonte: Banco Central."></div>
+        </div>
+      </article>
+
+      <article class="vrd" id="q-emprego" data-win="l">
+        <p class="vrd-tema">Emprego</p>
+        <h3 class="vrd-q">Quem teve menos desemprego?</h3>
+        <div class="vrd-vals">
+          <div class="vrd-val vrd-val--b"><span class="who"><i class="mk mk--b" aria-hidden="true"></i>Gov. Bolsonaro</span><b>12,1%</b><small>média 2019–22</small></div>
+          <div class="vrd-val vrd-val--l is-win"><span class="who"><i class="mk mk--l" aria-hidden="true"></i>Gov. Lula</span><b>7,0%</b><small>média 2023–25</small></div>
+        </div>
+        <p class="vrd-crit">Desemprego médio por ano · <b>menor é melhor</b></p>
+        <div class="vbar" role="img" aria-label="Governo Bolsonaro 12,1%; Governo Lula 7,0%; menor é melhor">
+          <div class="vbar-row vbar-row--b"><span><i class="mk mk--b" aria-hidden="true"></i>Bolsonaro</span><i style="--v:1"></i><b>12,1%</b></div>
+          <div class="vbar-row vbar-row--l is-win"><span><i class="mk mk--l" aria-hidden="true"></i>Lula</span><i style="--v:.579"></i><b>7,0%</b></div>
+        </div>
+        <div class="vrd-win-row"><p class="vrd-win">✓ Governo Lula</p><span class="q-forca">vitória clara</span></div>
+        <p class="vrd-ress"><b>Ressalva:</b> 2020–21 foram anos de pandemia; só 2019 já dá 12,0% × 7,0%.</p>
+        <p class="vrd-src">Fonte: IBGE, PNAD Contínua (BCB SGS 24369) · médias anuais 2019–22 × 2023–25 · <a href="#metodo">Como calculamos ›</a></p>
+        <div class="vrd-acoes">
+          <details class="vrd-det" data-abrir-desktop>
+            <summary data-track="detalhes_abertos" data-track-label="q-emprego"><span class="ao-abrir">Ver gráfico e detalhes</span><span class="ao-fechar">Fechar detalhes</span></summary>
+            <div class="q-mais-corpo"><div class="viz" id="g-emprego"></div></div>
+          </details>
+          <div class="share share--mini" data-share-variant="mini" data-share-section="desemprego" data-share-placement="card" data-share-anchor="q-emprego" data-share-name="o dado de desemprego"
+               data-share-text="📊 Desemprego, média: 12,1% no Governo Bolsonaro (2019-22) × 7,0% no Governo Lula (2023-25). Menor: Governo Lula. Fonte: PNAD Contínua/IBGE, via Banco Central."></div>
+        </div>
+      </article>
+
+      <article class="vrd" id="q-selic" data-win="ctx">
+        <p class="vrd-tema">Juro básico (Selic)</p>
+        <h3 class="vrd-q">Quanto foi o juro básico em cada governo?</h3>
+        <div class="vrd-vals">
+          <div class="vrd-val vrd-val--b"><span class="who"><i class="mk mk--b" aria-hidden="true"></i>Gov. Bolsonaro</span><b>6,5%</b><small>média 2019–22</small></div>
+          <div class="vrd-val vrd-val--l"><span class="who"><i class="mk mk--l" aria-hidden="true"></i>Gov. Lula</span><b>12,9%</b><small>média 2023–25</small></div>
+        </div>
+        <p class="vrd-crit">Selic média do período · <b>contexto, não conta ponto</b></p>
+        <div class="vrd-win-row"><p class="vrd-win">Contexto, não conta ponto</p></div>
+        <p class="vrd-why">O Banco Central é autônomo desde 2021; a Selic é instrumento de política, não resultado de um governo.</p>
+        <p class="vrd-src">Fonte: Banco Central, Selic (SGS 432) · média aritmética · <a href="#metodo">Como calculamos ›</a></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======================================================= .q-mais -->
+  <section class="chap" id="recolhivel" data-track-section="demo-recolhivel" data-track-name="Recolhível">
+    <div class="chap-hd"><div class="kicker">.q-mais</div><h2>Recolhível genérico</h2></div>
+    <p class="lead">Para "Como ler", notas longas, tabelas e o método. Ao abrir, os gráficos de dentro são redimensionados (ECharts e charts.js). Um link para um <code>#id</code> dentro dele abre o recolhível sozinho.</p>
+    <details class="q-mais">
+      <summary data-track="detalhes_abertos" data-track-label="demo-echarts"><span class="ao-abrir">Ver o gráfico antigo (ECharts) dentro do recolhível</span><span class="ao-fechar">Fechar</span></summary>
+      <div class="q-mais-corpo">
+        <p style="margin:6px 0 10px;font-size:14px">Selic média por governo (contexto). Este gráfico nasce com o recolhível fechado (largura zero) e é ajustado ao abrir.</p>
+        <div id="g-echarts" style="height:240px"></div>
+      </div>
+    </details>
+    <details class="q-mais">
+      <summary data-track="detalhes_abertos" data-track-label="demo-promessas"><span class="ao-abrir">Promessas cumpridas, tema a tema (charts.js)</span><span class="ao-fechar">Fechar</span></summary>
+      <div class="q-mais-corpo"><div class="viz" id="g-temas"></div></div>
+    </details>
+    <details class="q-mais q-mais--plano">
+      <summary><span class="ao-abrir">Variante discreta (.q-mais--plano), para "Leia mais"</span><span class="ao-fechar">Mostrar menos</span></summary>
+      <div class="q-mais-corpo"><p style="margin:0;font-size:15px">Texto longo que só aparece para quem quer. Continua no HTML: buscadores leem e o Ctrl+F do navegador encontra.</p></div>
+    </details>
+  </section>
+
+  <!-- ======================================================= .share -->
+  <section class="chap" id="compartilhar" data-track-section="demo-compartilhar" data-track-name="Compartilhar">
+    <div class="chap-hd"><div class="kicker">.share (share.js)</div><h2>Compartilhar</h2></div>
+    <p class="lead">Completo (fim de capítulo) e mini (dentro do card, acima). No celular, a barra inferior "Resumo · Compartilhar · Seções" substitui a barra do share.js e envia o texto do capítulo em leitura.</p>
+    <div class="share" data-share-section="promessas" data-share-placement="capitulo" data-share-name="o dado das promessas"
+         data-share-text="📊 Promessas dos planos registrados no TSE, mesma régua para os dois (Gov. Bolsonaro × Gov. Lula, mandato em curso até 30/09/2026): cumpridas 15,2% × 35,3%; só as verificáveis 22,7% × 38,7%; cumpridas + parciais 27,3% × 50,0%."></div>
+  </section>
+
+  <!-- ======================================================= charts.js -->
+  <section class="chap" id="graficos" data-track-section="demo-graficos" data-track-name="Gráficos">
+    <div class="chap-hd"><div class="kicker">charts.js (SVG)</div><h2>Gráficos do sistema "quem ganha"</h2></div>
+    <p class="lead">Duelo, placar e promessas, com fonte e endereço dentro da imagem e tabela gêmea para leitor de tela.</p>
+    <div class="vrd-grid">
+      <div class="viz" id="g-inflacao"></div>
+      <div class="viz" id="g-promessas"></div>
+    </div>
+  </section>
+
+  <section class="chap" id="metodo" data-track-section="demo-metodo" data-track-name="Método">
+    <div class="chap-hd"><div class="kicker">Como usar</div><h2>Snippets mínimos</h2></div>
+    <pre class="demo-code"><code>&lt;!-- faixa de credibilidade: já está em todas as páginas, logo após o menu de seções --&gt;
+&lt;!-- recolhível: --&gt;
+&lt;details class="q-mais"&gt;&lt;summary&gt;&lt;span class="ao-abrir"&gt;Como ler este gráfico&lt;/span&gt;&lt;span class="ao-fechar"&gt;Fechar&lt;/span&gt;&lt;/summary&gt;
+  &lt;div class="q-mais-corpo"&gt;… (figure/gráfico com o mesmo id) …&lt;/div&gt;&lt;/details&gt;</code></pre>
+  </section>
+
+<footer class="sitefoot">
+  <div class="sf-in">
+    <div class="sf-brand">
+      <img src="/assets/img/logo-400.png" alt="Bora pros dados Brasil">
+      <p>Análises descritivas com dados públicos oficiais do Brasil, sem juízo político. Tudo com fonte aberta e os arquivos originais disponíveis para download.</p>
+    </div>
+    <div class="sf-col" id="quem-fez"><h4>Quem sou</h4>
+      <p>Profissional da área de tecnologia há 16 anos e atuo como Gerente de Desenvolvimento de Software.</p>
+    </div>
+    <div class="sf-col-group">
+    <div class="sf-col"><h4>Análises</h4>
+      <a href="/">Governo Lula × Bolsonaro</a>
+      <a href="/propostas/">Propostas 2026</a>
+      <a href="/balanco/">Promessas e Realizações Lula × Bolsonaro</a>
+    </div>
+    <div class="sf-col"><h4>Método e dados</h4>
+      <a href="/sobre/">Sobre e método</a>
+      <a href="/#apendice">Como calculamos</a>
+      <a href="/fontes/">Dados abertos (32 arquivos)</a>
+      <a href="/dados/SHA256SUMS.txt">Checksums (SHA-256)</a>
+    </div>
+    </div>
+</div>
+  <div class="sf-base">© 2026 Bora pros dados Brasil · dados públicos oficiais · atualizado em <time datetime="__UPDATED_ISO__">__UPDATED__</time> · <a href="/dados/SHA256SUMS.txt">integridade dos arquivos (SHA-256)</a></div>
+</footer>
+</div>
+
+<script>
+(function(){
+  var bar = document.getElementById('prog');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.topnav a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function on(){
+    var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0) + '%';
+    var cur = 0;
+    secs.forEach(function(s, i){ if (s && s.getBoundingClientRect().top < 90) cur = i; });
+    links.forEach(function(a, i){ a.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', on, {passive:true}); on();
+})();
+</script>
+<script src="/assets/js/echarts-5.6.0.min.js"></script>
+<script>
+/* ECharts dentro de <details> fechado: nasce com largura 0; ui.js chama resize() ao abrir */
+(function(){
+  var c = echarts.init(document.getElementById('g-echarts'));
+  c.setOption({ grid:{left:8,right:16,top:24,bottom:8,containLabel:true}, tooltip:{trigger:'axis',triggerOn:'click',confine:true},
+    xAxis:{type:'category',data:['Gov. Bolsonaro (2019-22)','Gov. Lula (2023-25)'],axisTick:{show:false}},
+    yAxis:{type:'value',axisLabel:{formatter:'{value}%'}},
+    series:[{type:'bar',barMaxWidth:56,data:[{value:6.5,itemStyle:{color:'#1479B0'}},{value:12.9,itemStyle:{color:'#7250FB'}}],
+      label:{show:true,position:'top',formatter:function(p){return p.value.toLocaleString('pt-BR',{minimumFractionDigits:1})+'%';}}}] });
+})();
+document.addEventListener('DOMContentLoaded', function(){
+  function desenha(){
+    BPD.duelo('#g-divida', { titulo:'Dívida bruta do governo: quanto mudou, em pontos do PIB', criterio:'menor',
+      valores:{b:-3.6,l:11.2}, formato:{casas:1,sinal:true,sufixo:' pontos'}, vencedorRotulo:'dívida caiu',
+      sub:{b:'de 75,3% para 71,7% do PIB',l:'de 71,7% para 82,9% do PIB (parcial)'},
+      lados:{b:{periodo:'dez/18 → dez/22'},l:{periodo:'dez/22 → ago/26'}}, legendaZero:'← caiu · subiu →',
+      fonte:'Banco Central, DBGG (SGS 13762) · % do PIB', atualizado:'__UPDATED__' });
+    BPD.duelo('#g-emprego', { titulo:'Desemprego, média do período', criterio:'menor', valores:{b:12.1,l:7.0},
+      formato:{casas:1,sufixo:'%'}, vencedorRotulo:'menos desemprego',
+      nota:'12,1% = cerca de 12 em cada 100 pessoas que querem trabalhar estão sem emprego. 2026 (até ago): 5,6%.',
+      fonte:'IBGE, PNAD Contínua (BCB SGS 24369) · médias anuais 2019–2022 × 2023–2025', atualizado:'__UPDATED__' });
+    BPD.duelo('#g-inflacao', { titulo:'Inflação (IPCA), média ao ano', criterio:'menor', valores:{b:6.1,l:4.6},
+      formato:{casas:1,sufixo:'%'}, vencedorRotulo:'menor inflação',
+      nota:'Vitória apertada: sem 2020–21, 5,0% × 4,6%.',
+      fonte:'Banco Central, IPCA (SGS 433) · média geométrica 2019–2022 × 2023–2025', atualizado:'__UPDATED__' });
+    var cats = [{id:'cumprida',nome:'Cumprida',tipo:'cheio'},{id:'parcial',nome:'Parcial',tipo:'claro'},{id:'andamento',nome:'Em andamento',tipo:'listrado'},{id:'nao',nome:'Não cumprida',tipo:'neutro'},{id:'sem',nome:'Sem evidência oficial',tipo:'vazio'}];
+    BPD.promessas('#g-promessas', { titulo:'Promessas do plano registrado no TSE: % cumpridas', categorias:cats,
+      destaque:'cumprida', destaqueRotulo:'cumpridas', vencedorRotulo:'maior proporção cumprida',
+      lados:{b:{nome:'Governo Bolsonaro'},l:{nome:'Governo Lula'}},
+      linhas:[{lado:'b',sub:'plano de 2018 · 33 promessas · mandato encerrado',contagens:{cumprida:5,parcial:4,andamento:0,nao:13,sem:11}},
+              {lado:'l',sub:'plano de 2022 · 34 promessas · em curso (corte 30/09/2026)',contagens:{cumprida:12,parcial:5,andamento:12,nao:2,sem:3}}],
+      nota:'Os conjuntos são diferentes (33 × 34): compare a %, não a quantidade. O mandato de Lula está em curso.',
+      fonte:'catálogo de /balanco/ (67 promessas; vereditos só em fontes oficiais) · corte 30/09/2026', atualizado:'__UPDATED__' });
+    BPD.promessas('#g-temas', { titulo:'Tema a tema: quem cumpriu proporcionalmente mais', categorias:cats,
+      destaque:'cumprida', destaqueRotulo:'cumpridas', vencedorRotulo:'maior proporção cumprida',
+      grupos:[
+        {tema:'Bolso: impostos e trabalho',linhas:[{lado:'b',contagens:{cumprida:0,parcial:0,andamento:0,nao:4,sem:3}},{lado:'l',contagens:{cumprida:5,parcial:1,andamento:0,nao:1,sem:0}}]},
+        {tema:'Proteção social, saúde e educação',linhas:[{lado:'b',contagens:{cumprida:0,parcial:3,andamento:0,nao:1,sem:1}},{lado:'l',contagens:{cumprida:4,parcial:4,andamento:3,nao:0,sem:1}}]},
+        {tema:'Estado e infraestrutura',linhas:[{lado:'b',contagens:{cumprida:5,parcial:0,andamento:0,nao:3,sem:5}},{lado:'l',contagens:{cumprida:1,parcial:0,andamento:5,nao:0,sem:1}}]},
+        {tema:'Segurança, ambiente e instituições',linhas:[{lado:'b',contagens:{cumprida:0,parcial:1,andamento:0,nao:5,sem:2}},{lado:'l',contagens:{cumprida:2,parcial:0,andamento:4,nao:1,sem:1}}]}],
+      fonte:'catálogo de /balanco/ · "Saldo da seção" de cada tema', atualizado:'__UPDATED__' });
+    document.body.setAttribute('data-pronto', '1');
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(desenha); else desenha();
+});
+</script>
+</body>
+</html>

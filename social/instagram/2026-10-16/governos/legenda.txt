@@ -1,0 +1,13 @@
+Governo Bolsonaro (2019–2022) × Governo Lula (2023–2025): onde cada um ficou à frente, com a mesma régua para os dois lados e só dados oficiais (IBGE, Banco Central e Tesouro Nacional).
+
+Economia e renda: à frente o Governo Lula (crescimento, inflação, emprego e proteção social).
+Contas públicas: à frente o Governo Bolsonaro (controle do gasto, dívida pública e conta de juros).
+Selic (juro básico): contexto, não conta ponto.
+
+Em 3 quesitos a diferença é apertada (inflação, proteção social e controle do gasto), e cada imagem diz o que mudaria o resultado. Cada imagem traz os dois números, o período, a regra usada e a fonte.
+
+Arraste para ver os 8 cards. Números, ressalvas e método completos: boraprosdadosbrasil.netlify.app/#resumo (link na bio). Os arquivos originais, com SHA-256, estão em boraprosdadosbrasil.netlify.app/fontes/
+
+Dados até ago/set de 2026 · atualizado em 16/10/2026. Conteúdo informativo, com a mesma regra para os dois lados.
+
+#dadosabertos #economia #IBGE #BancoCentral #TesouroNacional

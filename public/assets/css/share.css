@@ -1,0 +1,55 @@
+/* ==== Bora pros dados Brasil — componente de compartilhamento (share.css) ====
+   Usa só a cor da marca (verde) e neutros: nunca azul/roxo, que são as cores dos lados.
+   Alvos de toque >= 44px; foco visível; sem dependências. */
+.share{--sh-fg:#18181b;--sh-muted:#52525b;--sh-line:#d4d4d8;--sh-bg:#ffffff;--sh-pri:var(--site-green,#02522b);--sh-focus:var(--site-blue,#003fb0);margin:20px 0}
+.share-lead{margin:0 0 8px;font-size:15px;line-height:1.45;color:var(--sh-muted)}
+.share-row,.share-panel{display:flex;flex-wrap:wrap;gap:8px}
+.share-panel{margin-top:8px}
+.share-panel[hidden]{display:none}
+.share-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;box-sizing:border-box;min-height:44px;min-width:44px;
+  padding:10px 16px;border:1px solid var(--sh-line);border-radius:999px;background:var(--sh-bg);color:var(--sh-fg);
+  font-family:inherit;font-size:15px;font-weight:600;line-height:1.2;text-decoration:none;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-appearance:none;appearance:none}
+.share-btn:hover{border-color:#a1a1aa;background:#fafafa}
+.share-btn:focus-visible{outline:3px solid var(--sh-focus);outline-offset:2px}
+.share-btn--wa{background:var(--sh-pri);border-color:var(--sh-pri);color:#ffffff}
+.share-btn--wa:hover{background:#036b39;border-color:#036b39}
+.share-btn--wa::before{content:"";width:8px;height:8px;border-radius:50%;background:#7ee2a8;flex:0 0 auto}
+.share-btn[aria-expanded="true"]{background:#f4f4f5}
+.share-status{display:block;margin-top:6px;font-size:14px;line-height:1.4;color:var(--sh-pri);font-weight:600}
+.share-status:empty{display:none}
+
+/* celular: botões dividem a linha (WhatsApp maior) */
+@media (max-width:480px){
+  .share-row .share-btn{flex:1 1 auto}
+  .share-row .share-btn--wa{flex:2 1 auto}
+}
+
+/* mini: dentro dos cards de veredito, discreto e igual para os dois lados */
+.share--mini{margin:10px 0 0}
+.share--mini .share-btn{padding:10px 14px;font-size:14px;font-weight:600;color:var(--sh-muted)}
+.share--mini .share-row .share-btn{flex:0 0 auto}
+
+/* barra fixa inferior (só celular) */
+.share--bar{position:fixed;left:0;right:0;bottom:0;z-index:40;margin:0;
+  padding:8px 16px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.97);
+  border-top:1px solid #e4e4e7;box-shadow:0 -4px 16px rgba(0,0,0,.06);
+  transform:translateY(110%);visibility:hidden;transition:transform .2s ease,visibility 0s linear .2s}
+.share--bar.is-on{transform:none;visibility:visible;transition:transform .2s ease}
+.share--bar .share-row{flex-wrap:nowrap;max-width:640px;margin:0 auto}
+.share--bar .share-row .share-btn{flex:1 1 0;padding:10px 8px}
+.share--bar .share-row .share-btn--wa{flex:1.6 1 0}
+.share--bar .share-panel{max-width:640px;margin:8px auto 0}
+.share--bar .share-status{text-align:center}
+@media (min-width:761px){.share--bar{display:none}}
+@media (prefers-reduced-motion:reduce){.share--bar,.share--bar.is-on{transition:none}}
+@media print{.share{display:none}}
+
+/* aviso flutuante (Copiar imagem): região viva sempre no DOM, só fica visível com .is-on */
+.share-toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:60;transform:translate(-50%,8px);
+  max-width:calc(100% - 32px);box-sizing:border-box;padding:12px 18px;border-radius:12px;background:#18181b;color:#ffffff;
+  font-size:15px;font-weight:600;line-height:1.4;text-align:center;box-shadow:0 6px 24px rgba(0,0,0,.18);
+  opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+.share-toast.is-on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:760px){.share-toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
+@media (prefers-reduced-motion:reduce){.share-toast{transition:none}}

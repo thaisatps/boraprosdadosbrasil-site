@@ -22,8 +22,17 @@ Opcional: em Admin → Retenção de dados, ampliar para 14 meses; considerar Go
 | `nav_click` | clique na navegação do site (sitebar/rodapé/âncoras) | `target`, `label` |
 | `plano_pagina_aberta` | abertura do PDF/modal na página citada (propostas/balanço) | `label` |
 | `trecho_original_aberto` | "Ver o texto exato na proposta/plano" | — |
-| `detalhes_abertos` | "detalhes" no catálogo (propostas/balanço) | — |
+| `detalhes_abertos` | "detalhes" no catálogo (propostas/balanço) e, nos componentes novos, o `<summary data-track="detalhes_abertos" data-track-label="q-…">` de "Ver gráfico e detalhes" / recolhíveis `.q-mais` | `label` (id do card) |
+| `share_click` | clique num canal de compartilhar (`share.js`; não conta o "Mais", que só abre o painel) | `method` (`whatsapp`\|`telegram`\|`x`\|`facebook`\|`copy`\|`native`\|`image`), `section` (slug), `placement` (`card`\|`capitulo`\|`placar`\|`fim`\|`barra`) |
+| `share_success` | a folha nativa conclui (`native`/`image`) ou a cópia dá certo (`copy`) | `method`, `section` |
+| `share_cancel` | a pessoa fecha a folha nativa (AbortError) | `method`, `section` |
+| `bbar_click` | toque na barra inferior do celular (`ui.js`) | `label` (`resumo`\|`compartilhar`\|`secoes`) |
 | `page_exit` | usuário sai/oculta a aba | `last_section`, `seconds_on_page`, `scroll_max` |
+
+Observações:
+- `share_*` vêm de `/assets/js/share.js` via `window.__track` (o `page_id` é acrescentado pelo `analytics.js`). Os cliques nos botões de compartilhar não geram `outbound_click` duplicado (`stopPropagation`). Pela barra inferior, `placement = barra` e `section` = o componente `.share` do capítulo em leitura (ou `page_id` se o capítulo não tiver um).
+- `nav_click` nas abas do cabeçalho: no HTML cada aba tem rótulo longo e curto (`.t-longo`/`.t-curto`), então `label` traz os dois ("Governo Lula × Bolsonaro Governos"); use `target` (o href) como dimensão principal.
+- Dimensões personalizadas de evento a criar no GA4: `method`, `placement` (e `label`, se ainda não existir). Eventos-chave sugeridos: `share_success` e `share_click` com `method = whatsapp` (o WhatsApp não confirma envio).
 
 As seções marcadas para `section_view` são as **10 áreas de cada página** (placar, capítulos, catálogo, método, dados/fontes…) — cada uma tem id e nome legível no atributo `data-track-section`/`data-track-name`. Isso permite funis por conteúdo real, e não só por percentual de rolagem.
 
@@ -43,8 +52,10 @@ As seções marcadas para `section_view` são as **10 áreas de cada página** (
 
 ## Campanhas e compartilhamento
 
-Para medir origem de compartilhamentos, use UTM nos links divulgados:
-`?utm_source=whatsapp&utm_medium=social&utm_campaign=comparativo99` (etc.). Sem UTM, a origem vem por referrer/direto normalmente.
+Os botões de compartilhar do site já montam o link com UTM (padrão único, `utm_medium=share`):
+`<página>?utm_source=whatsapp|telegram|x|facebook|copia|nativo|imagem&utm_medium=share&utm_campaign=<page_id>&utm_content=<slug>#<âncora>`.
+Para links divulgados à mão, use o mesmo padrão (ex.: `?utm_source=whatsapp&utm_medium=share&utm_campaign=comparativo`). Sem UTM, a origem vem por referrer/direto normalmente.
+Ciclo de volta: sessões com `utm_medium = share` por `utm_content` (slug) × `share_click` do mesmo slug.
 
 ## LGPD / consentimento
 

@@ -1,0 +1,42 @@
+# Bora pros dados Brasil
+
+> Comparações descritivas, só com dados públicos oficiais, sobre os governos Bolsonaro (2019-2022) e Lula (2023-2026), as promessas dos planos de governo de 2018 e 2022 e as propostas de Lula (PT) e Flávio Bolsonaro (PL) para o 2º turno da eleição presidencial de 25/10/2026. Mesma régua para os dois lados, fonte primária em cada número e os 50 arquivos originais disponíveis para download. O site não recomenda voto.
+
+Idioma: português do Brasil. Fontes exclusivas: TSE, Banco Central do Brasil (SGS e Focus), IBGE (PNAD Contínua/SIDRA), Tesouro Nacional (SICONFI/RREO/RGF, Tesouro Transparente) e Federal Reserve (NY Fed); no balanço de promessas, também atos normativos (planalto.gov.br, DOU), tramitação na Câmara e no Senado e páginas oficiais gov.br. Imprensa, ONGs e trackers de terceiros não são usados como fonte.
+
+Método em uma linha: governos comparados por janela (média 2019-2022 × média 2023-2025, com 2026 parcial quando indicado), valores monetários deflacionados pelo IPCA para R$ de dez/2025; extração das séries em 06/10/2026 (séries financeiras mensais até set/2026). Fato (número da fonte), cálculo (médias, deflação, fórmulas) e interpretação (vereditos) são sinalizados separadamente nas páginas.
+
+Ao citar, use o link da página de origem. Para o texto integral de todas as páginas, incluindo os catálogos completos de propostas e promessas, leia o llms-full.txt.
+
+## Páginas
+
+- [Governo Lula × Bolsonaro: comparação em dados oficiais](__SITE_URL__/): PIB, inflação, desemprego, renda, salário mínimo, gasto público por área, dívida e juros, Bolsonaro (2019-2022) × Lula (2023-2026), com placar por quesito, método e sensibilidade (com e sem a pandemia).
+- [Propostas Lula × Flávio Bolsonaro 2026](__SITE_URL__/propostas/): os planos de governo registrados no TSE para o 2º turno, 19 temas de cada lado, cada proposta com o rótulo do “como” (ferramenta nomeada, parcial, só intenção), a página do PDF oficial e o texto na íntegra.
+- [Promessas e Realizações: Bolsonaro (2018) × Lula (2022)](__SITE_URL__/balanco/): 67 promessas verificáveis dos planos registrados no TSE (33 de Bolsonaro, 34 de Lula), cada uma com critério objetivo, veredito e a fonte oficial; mandato de Lula avaliado até 30/09/2026.
+- [Fontes e dados: os 50 arquivos originais](__SITE_URL__/fontes/): download de cada arquivo-fonte (TSE, Banco Central, IBGE, Tesouro, Federal Reserve, Congresso e STF), com o que é, onde é usado e hash SHA-256.
+
+## Números principais (com período e fonte)
+
+- Placar do comparativo de governos: 4 × 3 nos quesitos. Governo Lula melhor em crescimento (PIB médio ~3,0% ao ano em 2023-2025 contra ~1,4% em 2019-2022; BCB SGS 7326), inflação (IPCA médio 4,6% contra 6,1% ao ano; BCB SGS 433), emprego (desemprego médio 6,6% contra 12,3%, média anual oficial; IBGE, PNAD Contínua, SIDRA 4562) e proteção social. Governo Bolsonaro melhor em controle do gasto (despesa primária média real R$ 2,67 tri contra R$ 3,02 tri; Tesouro/SICONFI), dívida pública (dívida bruta caiu de 75,3% para 71,7% do PIB entre dez/2018 e dez/2022; subiu de 71,7% para 82,9% entre dez/2022 e ago/2026; BCB SGS 13762) e conta de juros (juros nominais médios de 5,0% do PIB, R$ 535 bi/ano, contra 7,5%, R$ 928 bi/ano, a preços de dez/2025; BCB/NFSP). A Selic (média 6,5% contra 12,9%) entra como contexto.
+- Renda: renda domiciliar per capita real média de R$ 1.781 (2019-2022) para R$ 2.127 (2023-2025), +19,4% (IBGE, SIDRA 7531, deflator IPCA); Gini médio 0,531 → 0,511, com 0,504 em 2024, o menor da série iniciada em 2012.
+- Salário mínimo real médio: R$ 1.374 (2019-2022) → R$ 1.478 (2023-2025), +7,5% real (BCB SGS 1619 corrigido pelo IPCA, R$ de dez/2025).
+- Propostas 2026: com a mesma régua, o plano de Lula nomeia o caminho (instrumento) em 11 de 19 temas (6 parciais, 2 sem caminho); o de Flávio Bolsonaro, em 1 de 19 (12 parciais, 6 sem caminho). Ressalva da própria página: a régua favorece a continuidade (programas existentes contam como ferramenta nomeada) e mede o que o plano diz, não a chance de execução.
+- Promessas: 35,3% das promessas do plano de Lula (2022) cumpridas até 30/09/2026 (mandato em curso) contra 15,2% das do plano de Bolsonaro (2018), mandato encerrado. Conjuntos de tamanhos diferentes (34 × 33): compare proporções. 14 itens ficaram “sem evidência oficial” (11 de Bolsonaro, 3 de Lula), o que não equivale a descumprimento.
+
+## Dados para download
+
+- [Lista de arquivos e checksums SHA-256](__SITE_URL__/dados/SHA256SUMS.txt)
+- [Plano de governo de Lula (PT), 2026, registrado no TSE (PDF)](__SITE_URL__/dados/tse/2026BR280002542548_01.pdf)
+- [Plano de governo de Flávio Bolsonaro (PL), 2026, registrado no TSE (PDF)](__SITE_URL__/dados/tse/2026BR280002551544_01.pdf)
+- [Plano de governo de Bolsonaro, 2018, registrado no TSE (PDF)](__SITE_URL__/dados/tse/2018BR280000614517.pdf)
+- [Plano de governo de Lula, 2022, registrado no TSE (PDF)](__SITE_URL__/dados/tse/2022BR280001607829.pdf)
+
+## Sobre
+
+- Autoria: projeto independente “Bora pros dados Brasil”, mantido por um profissional de tecnologia (gerente de desenvolvimento de software, 16 anos na área). Análises descritivas, sem juízo político.
+- Dados: arquivos públicos dos portais oficiais, reproduzidos sem alteração; a reutilização segue os termos de cada portal de origem. Textos e análises: © 2026 Bora pros dados Brasil; citação permitida com link para a página de origem.
+
+## Optional
+
+- [Texto integral de todas as páginas, com os catálogos completos](__SITE_URL__/llms-full.txt)
+- [Mapa do site](__SITE_URL__/sitemap.xml)

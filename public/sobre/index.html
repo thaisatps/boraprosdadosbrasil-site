@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Quem faz o Bora pros dados Brasil, o que o site compara, de onde vêm os números (só fontes oficiais), as regras de cada comparação e como avisar um erro. O site não indica voto.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<link rel="canonical" href="__SITE_URL__/sobre/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Bora pros dados Brasil">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Sobre e método: quem fez, as regras e as fontes">
+<meta property="og:description" content="Quem faz o Bora pros dados Brasil, o que o site compara, de onde vêm os números (só fontes oficiais), as regras de cada comparação e como avisar um erro. O site não indica voto.">
+<meta property="og:url" content="__SITE_URL__/sobre/">
+<meta property="og:image" content="__SITE_URL__/assets/img/og-fontes.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bora pros dados Brasil: fontes oficiais e método">
+<meta property="article:published_time" content="__DATE_PUBLISHED__">
+<meta property="article:modified_time" content="__DATE_MODIFIED__">
+<meta property="article:section" content="Sobre e método">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sobre e método: quem fez, as regras e as fontes">
+<meta name="twitter:description" content="Quem faz o Bora pros dados Brasil, o que o site compara, de onde vêm os números (só fontes oficiais), as regras de cada comparação e como avisar um erro. O site não indica voto.">
+<meta name="twitter:image" content="__SITE_URL__/assets/img/og-fontes.jpg">
+<meta name="twitter:image:alt" content="Bora pros dados Brasil: fontes oficiais e método">
+<link rel="icon" href="/assets/img/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#02522b">
+<title>Sobre e método: quem fez, as regras e as fontes | Bora pros dados Brasil</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#f7f7f8;--card:#fff;--border:#e4e4e7;--text:#18181b;--muted:#71717a}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6}
+a{color:#02522b}
+.wrap{max-width:860px;margin:0 auto;padding:30px 20px 10px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 10px}
+.hdr .sub{font-size:16px;color:#3f3f46;margin:12px 0 0;max-width:70ch}
+.sobre{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:6px 22px 18px;margin:22px 0 0;box-shadow:0 1px 2px rgba(24,24,27,.04),0 14px 34px -22px rgba(24,24,27,.22)}
+.sobre section{padding:14px 0 4px;border-bottom:1px solid var(--border);scroll-margin-top:16px}
+.sobre section:last-of-type{border-bottom:0}
+.sobre h2{margin:0 0 4px;font-size:19px;letter-spacing:-.01em;line-height:1.3}
+.sobre p{margin:0 0 10px;font-size:16px;line-height:1.6;max-width:70ch}
+.a-definir{display:inline-block;padding:0 6px;border:1px dashed #a1a1aa;border-radius:6px;color:#52525b;font-size:14px;background:#fafafa;white-space:nowrap}
+.metodos{display:flex;flex-wrap:wrap;gap:6px 8px;margin:4px 0 10px;padding:0;list-style:none}
+.metodos a{display:inline-flex;align-items:center;min-height:40px;padding:4px 12px;border:1px solid var(--border);border-radius:999px;background:#fafafa;color:#18181b;text-decoration:none;font-size:14.5px}
+.metodos a:hover{border-color:#02522b}
+.upd{font-size:14px;color:#52525b;margin:12px 0 0}
+.siglas{margin:4px 0 10px;display:grid;gap:6px}
+.siglas div{display:grid;grid-template-columns:minmax(92px,auto) 1fr;gap:2px 12px;font-size:15px;line-height:1.45}
+.siglas dt{font-weight:700}
+.siglas dd{margin:0;color:#3f3f46}
+@media(max-width:420px){.siglas div{grid-template-columns:1fr}}
+@media(max-width:760px){.wrap{padding:22px 16px 10px}.sobre{padding:4px 16px 14px}}
+@media (pointer:coarse){.metodos a{min-height:44px}}
+</style>
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>window.SITE_CONFIG={"gaId":"__GA_ID__","siteUrl":"__SITE_URL__","pageId":"sobre","consent":"__CONSENT__"};</script>
+<script defer src="/assets/js/analytics.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "__SITE_URL__/#org", "name": "Bora pros dados Brasil", "url": "__SITE_URL__/", "logo": {"@type": "ImageObject", "url": "__SITE_URL__/assets/img/logo-400.png", "width": 400, "height": 225}, "description": "Análises descritivas com dados públicos oficiais do Brasil, sem juízo político, com os arquivos originais para download."}, {"@type": "WebSite", "@id": "__SITE_URL__/#website", "name": "Bora pros dados Brasil", "url": "__SITE_URL__/", "inLanguage": "pt-BR", "publisher": {"@id": "__SITE_URL__/#org"}}, {"@type": "BreadcrumbList", "@id": "__SITE_URL__/sobre/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "__SITE_URL__/"}, {"@type": "ListItem", "position": 2, "name": "Sobre e método", "item": "__SITE_URL__/sobre/"}]}, {"@type": "AboutPage", "@id": "__SITE_URL__/sobre/#webpage", "url": "__SITE_URL__/sobre/", "name": "Sobre e método: quem fez, as regras e as fontes", "description": "Quem faz o Bora pros dados Brasil, o que o site compara, de onde vêm os números (só fontes oficiais), as regras de cada comparação e como avisar um erro. O site não indica voto.", "inLanguage": "pt-BR", "isPartOf": {"@id": "__SITE_URL__/#website"}, "about": {"@id": "__SITE_URL__/#org"}, "mainEntity": {"@id": "__SITE_URL__/#org"}, "datePublished": "__DATE_PUBLISHED__", "dateModified": "__DATE_MODIFIED__", "breadcrumb": {"@id": "__SITE_URL__/sobre/#breadcrumb"}, "publisher": {"@id": "__SITE_URL__/#org"}}]}</script>
+<script defer src="/assets/js/ui.js"></script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="sitebar">
+  <div class="sb-in">
+    <a class="sb-brand" href="/" aria-label="Bora pros dados Brasil, início"><img src="/assets/img/logo-400.png" alt="Bora pros dados Brasil" width="200" height="113"></a>
+    <a href="/fontes/" class="sb-cta"><svg class="sb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg><span class="t-longo">Baixar fontes →</span> <span class="t-curto">Fontes</span></a>
+    <nav class="sb-nav" aria-label="Páginas do site">
+      <a href="/"><span class="t-longo">Governo Lula × Bolsonaro</span> <span class="t-curto">Governos</span></a>
+      <a href="/propostas/">Propostas 2026</a>
+      <a href="/balanco/"><span class="t-longo">Promessas e Realizações Lula × Bolsonaro</span> <span class="t-curto">Promessas</span></a>
+      <a href="/comparacoes/">Comparações</a>
+    </nav>
+  </div>
+</header>
+<main id="conteudo" tabindex="-1">
+<div class="q-cred-wrap">
+  <div class="q-cred" role="note" aria-label="Sobre a confiabilidade destes dados">
+    <span class="q-cred-selo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3.5v6c0 5-3.4 8.8-8 10.5-4.6-1.7-8-5.5-8-10.5v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg> Só fontes oficiais</span>
+    <span class="q-cred-fontes"><b><abbr title="Instituto Brasileiro de Geografia e Estatística">IBGE</abbr></b> · <b>Banco Central</b> · <b>Tesouro</b> · <b><abbr title="Tribunal Superior Eleitoral">TSE</abbr></b> · <b><abbr title="Federal Reserve, o banco central dos EUA">Fed</abbr></b></span>
+    <span class="q-cred-data">Atualizado em <time datetime="__UPDATED_ISO__">__UPDATED__</time></span>
+    <span class="q-cred-links"><a href="#regras">Como calculamos ›</a><a href="/fontes/">50 arquivos com SHA-256 ›</a><a href="#quem-fez">Quem fez ›</a></span>
+  </div>
+</div>
+<div class="wrap" id="topo">
+  <div class="hdr">
+    <p class="eyebrow">Bora pros dados Brasil · sobre e método</p>
+    <h1>Sobre este site</h1>
+    <p class="sub">Quem fez, o que comparamos, de onde vêm os números e como avisar um erro. Este site compara dados com a mesma regra para os dois lados. Não indica voto.</p>
+  </div>
+
+  <article class="sobre" data-track-section="sobre" data-track-name="Sobre e método">
+    <section id="autoria" aria-labelledby="autoria-t">
+      <h2 id="autoria-t">Quem fez</h2>
+      <!-- {AUTORIA}: o dono do projeto ainda vai definir o texto -->
+      <p><span class="a-definir" data-placeholder="AUTORIA">[a definir]</span>. O site não tem ligação com partido, candidato ou campanha e não indica voto.</p>
+    </section>
+    <section id="o-que" aria-labelledby="o-que-t">
+      <h2 id="o-que-t">O que comparamos</h2>
+      <p>Três coisas, com a mesma regra para os dois lados: os resultados dos governos Bolsonaro (2019–2022) e Lula (2023–2025); o que cada plano de 2026 diz sobre como vai fazer; e quanto dos planos de 2018 e 2022 foi cumprido.</p>
+    </section>
+    <section id="origem" aria-labelledby="origem-t">
+      <h2 id="origem-t">De onde vêm os números</h2>
+      <p>Só de fontes oficiais: IBGE (Instituto Brasileiro de Geografia e Estatística), Banco Central, Tesouro Nacional, TSE (Tribunal Superior Eleitoral) e, para o juro dos EUA, o Federal Reserve (o banco central americano); as regras do gasto, do Planalto, do Congresso e do STF (Supremo Tribunal Federal). Os 50 arquivos estão em <a href="/fontes/">/fontes/</a>, do jeito que os portais publicam, cada um com sua impressão digital (<a href="/dados/SHA256SUMS.txt">SHA-256</a>).</p>
+    </section>
+    <section id="regras" aria-labelledby="regras-t">
+      <h2 id="regras-t">As regras</h2>
+      <p>Comparamos a média por ano de cada governo, porque um teve 4 anos e o outro 3. Valores em reais estão em R$ de dezembro de 2025, já sem a inflação. Cada comparação diz se “maior” ou “menor” é melhor. Quando uma comparação usa uma regra própria (por exemplo, “sem 2020” ou “parcial até ago/26”), isso aparece no próprio gráfico. O selo “apertada” avisa quando outra conta razoável muda o resultado.</p>
+      <p style="margin-bottom:4px">Como calculamos, página por página:</p>
+      <ul class="metodos">
+        <li><a href="/#apendice">Governos</a></li>
+        <li><a href="/propostas/#metodo">Propostas 2026</a></li>
+        <li><a href="/balanco/#metodo">Promessas</a></li>
+        <li><a href="/fontes/#sha256">Conferir um arquivo</a></li>
+      </ul>
+    </section>
+    <section id="siglas" aria-labelledby="siglas-t">
+      <h2 id="siglas-t">Siglas que aparecem no site</h2>
+      <dl class="siglas">
+        <div><dt>IBGE</dt><dd>Instituto Brasileiro de Geografia e Estatística</dd></div>
+        <div><dt>TSE</dt><dd>Tribunal Superior Eleitoral (onde os planos de governo são registrados)</dd></div>
+        <div><dt>STF</dt><dd>Supremo Tribunal Federal</dd></div>
+        <div><dt>PIB</dt><dd>Produto Interno Bruto: tudo o que o país produz em um ano</dd></div>
+        <div><dt>IPCA e INPC</dt><dd>os índices oficiais de inflação (o quanto os preços sobem)</dd></div>
+        <div><dt>Selic</dt><dd>o juro básico da economia, decidido pelo Banco Central</dd></div>
+        <div><dt>PNAD</dt><dd>Pesquisa Nacional por Amostra de Domicílios, do IBGE (emprego e renda)</dd></div>
+        <div><dt>SGS e SIDRA</dt><dd>os sistemas de séries do Banco Central e de tabelas do IBGE</dd></div>
+        <div><dt>SICONFI, RREO e RGF</dt><dd>o sistema e os relatórios oficiais de contas públicas do Tesouro Nacional</dd></div>
+        <div><dt>RTN</dt><dd>Resultado do Tesouro Nacional, o boletim mensal das contas do governo</dd></div>
+        <div><dt>SHA-256</dt><dd>a “impressão digital” de um arquivo, para conferir que ele não mudou</dd></div>
+      </dl>
+    </section>
+    <section id="erro" aria-labelledby="erro-t">
+      <h2 id="erro-t">Achou um erro?</h2>
+      <!-- {CONTATO}: canal de contato ainda não publicado -->
+      <p>Escreva para <span class="a-definir" data-placeholder="CONTATO">[a definir]</span> com o endereço da página e o número. Corrigimos e registramos a mudança com data.</p>
+    </section>
+    <section id="licenca" aria-labelledby="licenca-t">
+      <h2 id="licenca-t">Licença</h2>
+      <!-- {LICENCA}: o dono do projeto ainda vai escolher a licença -->
+      <p>Textos e gráficos: <span class="a-definir" data-placeholder="LICENCA">[a definir]</span>. Os dados são públicos e pertencem aos órgãos que os publicam.</p>
+      <p class="upd">Atualizado em <time datetime="__UPDATED_ISO__">__UPDATED__</time>.</p>
+    </section>
+  </article>
+</div>
+</main>
+<footer class="sitefoot">
+  <div class="sf-in">
+    <div class="sf-brand">
+      <img src="/assets/img/logo-400.png" alt="Bora pros dados Brasil">
+      <p>Análises descritivas com dados públicos oficiais do Brasil, sem juízo político. Tudo com fonte aberta e os arquivos originais disponíveis para download.</p>
+    </div>
+    <div class="sf-col" id="quem-fez"><h2>Quem sou</h2>
+      <p>Profissional da área de tecnologia há 16 anos e atuo como Gerente de Desenvolvimento de Software. Lidero o time responsável pela plataformização e disponibilização de dados por diferentes meios em uma Big Tech brasileira, referência no mercado, atuando em um ambiente de altíssima volumetria e escala.</p>
+    </div>
+    <div class="sf-col-group">
+    <div class="sf-col"><h2>Análises</h2>
+      <a href="/">Governo Lula × Bolsonaro</a>
+      <a href="/propostas/">Propostas 2026</a>
+      <a href="/balanco/">Promessas e Realizações Lula × Bolsonaro</a>
+    </div>
+    <div class="sf-col"><h2>Método e dados</h2>
+      <a href="/sobre/" aria-current="page">Sobre e método</a>
+      <a href="/#apendice">Como calculamos</a>
+      <a href="/fontes/">Dados abertos (50 arquivos)</a>
+      <a href="/dados/SHA256SUMS.txt">Checksums (SHA-256)</a>
+    </div>
+    </div>
+</div>
+  <div class="sf-base">© 2026 Bora pros dados Brasil · dados públicos oficiais · atualizado em <time datetime="__UPDATED_ISO__">__UPDATED__</time> · <a href="/dados/SHA256SUMS.txt">integridade dos arquivos (SHA-256)</a></div>
+</footer>
+</body>
+</html>

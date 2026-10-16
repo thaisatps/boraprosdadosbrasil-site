@@ -4,3 +4,9 @@ dist/
 *.tfstate
 *.tfstate.*
 .terraform/
+
+# Local Netlify folder
+.netlify
+__pycache__/
+__pycache__/
+.claude/
